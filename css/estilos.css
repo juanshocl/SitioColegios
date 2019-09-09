@@ -6,13 +6,6 @@
 @import url(final.css);
 @import url(galeria.css);
 @import url(newgaleria.css);
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Open Sans', sans-serif;
     background: #333;
@@ -23,7 +16,6 @@ header {
     height: 60px;
     background: lightblue;
     color: black;
-
     position: fixed;
     top: -10px;
     left: 0;
@@ -33,10 +25,6 @@ header {
 .contenedor {
     width: 100%;
     margin: auto;
-}
-
-h1{
-    float: left;
 }
 
 header .contenedor {
@@ -57,7 +45,6 @@ footer .contenedor {
 
 .copy {
     font-size: 20px;
-
 }
 
 .contact {
@@ -66,19 +53,15 @@ footer .contenedor {
     font-size: 28px;
 }
 
-.contact a{
+.contact a {
     color: #333;
     text-decoration: none;
 }
 
-
-
-
-.fijar{
+.fijar {
     margin-top: -135px;
 }
 
 .color {
     background-color: gainsboro;
 }
-
