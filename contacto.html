@@ -52,28 +52,57 @@
         </div>
     </header>
 
+    <!-- FORMULARIO -->
+
+<div class="form-container">
+<form class="text-center border border-light p-5" action="#!">
+
+    <p class="h4 mb-4">Contáctanos</p>
+
+    <!-- Nombre -->
+    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nombre">
+
+    <!-- Email -->
+    <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+    <!-- Region -->
+    <select class="browser-default custom-select mb-4" id="txtRegion" oninput="selectCity()">
+        <option value="" disabled selected>Elige tu Region</option>
+    </select>
 
 
+    <!-- Comuna -->
+    <select class="browser-default custom-select mb-4" id="txtCity">
+        <option value="" disabled selected>Elige tu comuna</option>
+    </select>
 
-    <section id="Galeria">
-        <h4 class="title"> Libros más vendidos</h4>
-        <div class="contenedor-galeria">
-            <img tabindex="1" src="imagenes/galeria1.jpg" alt="firstbook" class="galeria__img">
-            <img tabindex="2" src="imagenes/galeria2.jpg" alt="secondbook" class="galeria__img">
-            <img tabindex="3" src="imagenes/galeria3.jpg" alt="thirdbook" class="galeria__img">
-            <img tabindex="4" src="imagenes/galeria4.jpg" alt="fourthbook" class="galeria__img">
-            <img tabindex="5" src="imagenes/galeria5.jpg" alt="fifthbook" class="galeria__img">
-            <img tabindex="6" src="imagenes/galeria6.jpg" alt="sixthbook" class="galeria__img">
-        </div>
+    <!-- Tema -->
+    <label>Donde escuchaste de nosotros?</label>
+    <select class="browser-default custom-select mb-4">
+        <option value="" disabled selected>Elige una opcion</option>
+        <option value="1" > Grupo de amigos</option>
+        <option value="2"> En el trabajo</option>
+        <option value="3"> Publicidad </option>
+    </select>
 
+    <!-- Mensaje -->
+    <div class="form-group">
+        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Mensaje"></textarea>
+    </div>
 
+    <!-- Avisos -->
+    <div class="custom-control custom-checkbox mb-4">
+        <input type="checkbox" class="custom-control-input" id="defaultContactFormNotice">
+        <label class="custom-control-label" for="defaultContactFormNotice">Quiero recibir avisos de colegios</label>
+    </div>
 
+    <!-- Boton enviar -->
+    <button class="btn btn-info btn-block" type="submit">Enviar</button>
 
-    </section>
-
-
-
-    <!-- FOOTER -->
+</form>
+<!-- FIN FORMULARIO -->
+ 
+            <!-- FOOTER -->
     <footer>
         <section id="final">
             <div class="contenedor">
@@ -84,6 +113,8 @@
                 </div>
             </div>
         </section>
+
+    </div>
     </footer>
     <!-- FIN FOOTER -->
 
@@ -96,8 +127,8 @@
     <!-- <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script> -->
-    <script src="js/main.js"></script>
+    <script src="js/comuna.js"></script>
 
 
-</body>
-</html>
+    </body>
+    </html>
