@@ -52,95 +52,83 @@
         </div>
     </header>
 
+    <!-- FORMULARIO -->
 
-    <div class="gal-section">
-        <ul class="gal-grid">
-            <li>
-                <div class="gal-box gal-img-1">
-                    <a href="#">
-                        <h3>El señor del castillo </h3>
-                        <p>Una historia de un hombre solo dentro de su propio castillo</p>
-                    </a>
-                </div>
-            </li>
+<div class="form-container">
+<form class="text-center border border-light p-5" action="#!">
 
-            <li>
-                <div class="gal-box gal-img-2">
-                    <a href="#">
-                        <h3>Asi se hace un plan </h3>
-                        <p>Entrando en el contexto de ambiente empresarial de una empresa</p>
-                    </a>
-                </div>
-            </li>
+    <p class="h4 mb-4">Contáctanos</p>
 
-            <li>
-                <div class="gal-box gal-img-3">
-                    <a href="#">
-                        <h3>Ciudades de papel</h3>
-                        <p>Una gran historia de amor y desamor, una joven que deja su lugar</p>
-                    </a>
-                </div>
-            </li>
+    <!-- Nombre -->
+    <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nombre">
 
-            <li>
-                <div class="gal-box gal-img-4">
-                    <a href="#">
-                        <h3>Harry Potter</h3>
-                        <p>El mago lo hizo otra vez</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="gal-box gal-img-5">
-                    <a href="#">
-                        <h3>Fisiologia humana</h3>
-                        <p>Libro tecnico sobre el cuerpo</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="gal-box gal-img-6">
-                    <a href="#">
-                        <h3>Zombie apocalipsis</h3>
-                        <p>Manual de sobrevivencia en caso de apocalipsis zombie</p>
-                    </a>
-                </div>
-            </li>
+    <!-- Email -->
+    <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+    <!-- Region -->
+    <select class="browser-default custom-select mb-4" id="txtRegion" oninput="selectCity()">
+        <option value="" disabled selected>Elige tu Region</option>
+    </select>
 
 
+    <!-- Comuna -->
+    <select class="browser-default custom-select mb-4" id="txtCity">
+        <option value="" disabled selected>Elige tu comuna</option>
+    </select>
 
+    <!-- Tema -->
+    <label>Donde escuchaste de nosotros?</label>
+    <select class="browser-default custom-select mb-4">
+        <option value="" disabled selected>Elige una opcion</option>
+        <option value="1" > Grupo de amigos</option>
+        <option value="2"> En el trabajo</option>
+        <option value="3"> Publicidad </option>
+    </select>
 
-
-        </ul>
+    <!-- Mensaje -->
+    <div class="form-group">
+        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Mensaje"></textarea>
     </div>
 
+    <!-- Avisos -->
+    <div class="custom-control custom-checkbox mb-4">
+        <input type="checkbox" class="custom-control-input" id="defaultContactFormNotice">
+        <label class="custom-control-label" for="defaultContactFormNotice">Quiero recibir avisos de colegios</label>
+    </div>
 
-<!-- FOOTER -->
-<footer>
-    <section id="final">
-        <div class="contenedor">
-            <p class="copy"> COLEGIOS &copy; 2019 </p>
-            <div class="contact">
-                <a tabindex="7" class="icon-phone-outline" href="#"></a>
-                <a tabindex="8" class="icon-mail" href="#"></a>
+    <!-- Boton enviar -->
+    <button class="btn btn-info btn-block" type="submit">Enviar</button>
+
+</form>
+<!-- FIN FORMULARIO -->
+ 
+            <!-- FOOTER -->
+    <footer>
+        <section id="final">
+            <div class="contenedor">
+                <p class="copy"> COLEGIOS &copy; 2019 </p>
+                <div class="contact">
+                    <a tabindex="7" class="icon-phone-outline" href="#"></a>
+                    <a tabindex="8" class="icon-mail" href="#"></a>
+                </div>
             </div>
-        </div>
-    </section>
-</footer>
-<!-- FIN FOOTER -->
+        </section>
+
+    </div>
+    </footer>
+    <!-- FIN FOOTER -->
 
 
-<!-- Seccion Script  -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Seccion Script  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<!-- <script src="js/jquery-3.3.1.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script> -->
-<script src="js/main.js"></script>
+    <!-- <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> -->
+    <script src="js/comuna.js"></script>
 
 
-</body>
-
-</html>
+    </body>
+    </html>
