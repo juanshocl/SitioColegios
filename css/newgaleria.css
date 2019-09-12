@@ -1,12 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Pacifico');
-
-.gal-section{
+.gal-section {
     max-width: 960px;
     margin: 0 auto;
     padding: 6% 2%;
 }
 
-.gal-grid{
+.gal-grid {
     margin: 20px 0 0 0;
     padding: 0;
     list-style: none;
@@ -19,7 +18,8 @@
     clear: both;
 }
 
-.gal-grid:after, .gal-box:before {
+.gal-grid:after,
+.gal-box:before {
     content: "";
     display: table;
 }
@@ -47,28 +47,19 @@
 }
 
 .gal-img-1 {
-    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)),
-    url(http://www.proyectomeraki.org/wp-content/uploads/2016/02/Portada-El-Se-or-del-Castillo-RBG-e1456620779372.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)), url('../imagenes/colegio1.png');
 }
+
 .gal-img-2 {
-    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)),
-    url(https://www.marcialpons.es/media/img/portadas/9788473606585.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)), url('../imagenes/colegio2.jpeg');
 }
+
 .gal-img-3 {
-    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)),
-    url(https://m1.paperblog.com/i/325/3251155/cambio-portada-ciudades-papel-L-oiVUsh.jpeg);
+    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)), url('../imagenes/colegio3.png');
 }
+
 .gal-img-4 {
-    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)),
-    url(http://abracalibros.com.ar/wp-content/uploads/2018/01/9788498387643-350x400.jpg);
-}
-.gal-img-5 {
-    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)),
-    url(https://libreriamorelos.mx/images/assets/portadas/9786071506702.jpg);
-}
-.gal-img-6 {
-    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)),
-    url(https://s-media-cache-ak0.pinimg.com/originals/5d/90/b4/5d90b4fa053430d903d0d9d25910f1ed.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.10)), url('../imagenes/colegio4.jpeg');
 }
 
 .gal-info {

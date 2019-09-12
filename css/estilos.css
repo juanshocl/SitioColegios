@@ -65,3 +65,20 @@ footer .contenedor {
 .color {
     background-color: gainsboro;
 }
+
+body,
+.modal-open .page-container,
+.modal-open .page-container .navbar-fixed-top,
+.modal-open .modal-container {
+    overflow-y: scroll;
+}
+
+@media (max-width: 979px) {
+    .modal-open .page-container .navbar-fixed-top {
+        overflow-y: visible;
+    }
+}
+
+#map-canvas {
+    height: 400px;
+}
