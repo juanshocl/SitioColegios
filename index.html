@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> COLEGIOS </title>
-    <!-- <link rel="icon" href="imagenes/logo-100.jpg"> -->
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="script" href="JavaScript/main.js">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/fontello.css">
+    <!-- Scripts -->
 
 </head>
 
@@ -31,9 +31,6 @@
                                 <a href="galeria.html" class="nav-link">Galeria</a>
                             </li>
                             <li class="nav-item">
-                                <a href="Recomendar.html" class="nav-link">Recomendar</a>
-                            </li>
-                            <li class="nav-item">
                                 <a href="contacto.html" class="nav-link">Contacto</a>
                             </li>
                         </ul>
@@ -50,7 +47,6 @@
                 <main class="container">
                     <div class="row">
                         <div class="col">
-
                             <div class="carousel slide" id="principal-carousel" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#principal-carousel" data-slid-to="0" class="active"></li>
@@ -60,23 +56,16 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="imagenes/p1.jpg" alt="" style="width:100%">
+                                        <img src="imagenes/slide1.png" alt="" style="width:90%;" class="d-block w-100">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="imagenes/p2.jpg" alt="" style="width:100%">
+                                        <img src="imagenes/slide2.png" alt=" " style="width:90%; " class="d-block w-100">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="imagenes/p4.jpg" alt="" style="width:100%"> =======
-                                        <img src="https://picsum.photos/1200/400" alt="" style="width:90%;" class="d-block w-100">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/1200/400/?blur=2" alt=" " style="width:90%; " class="d-block w-100">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="https://picsum.photos/1200/400/?blur=3" alt="" style="width:90%;" class="d-block w-100">
+                                        <img src="imagenes/slide3.png" alt="" style="width:90%;" class="d-block w-100">
                                     </div>
                                     <div class=" carousel-item ">
-                                        <img src="https://picsum.photos/1200/400/?blur=4" alt=" " style="width:90%; " class="d-block w-100">
+                                        <img src="imagenes/slide4.png" alt=" " style="width:90%; " class="d-block w-100">
                                     </div>
                                 </div>
 
@@ -92,175 +81,122 @@
                             </div>
                         </div>
                     </div>
+            </div>
+        </div>
     </section>
     <!-- FIN CARRUSEL  -->
 
     <!-- GALERIA -->
-
-    <!-- FIN GALERIA -->
-
-    <!-- FOOTER -->
-
-
     <div class="row">
         <div class="col-12">
             <div class="py-4 border-bottom">
-                <h1 class="text-center">Galeria</h1>
+                <h1 class="text-center">Colegios Mas consultados</h1>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                <div class="card">
+                    <img class="card-img-top" id="imgCard1" src="https://picsum.photos/600/400/" class="card-img-top img-fluid" alt="">
+                    <div class="card-body">
+                        <h3 class="card-title" id="cardID">San Francisco de Sales</h3>
+                        <p class="card-subtitle text-muted mb-2">
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star-half-alt"></i>
+                            <i class="icon-star-empty"></i>
+                        </p>
+                        <p class="card-text" id="shortDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium similique vero perferendis dolorem in libero id omnis, esse nesciunt corrupti?
+                        </p>
 
-    <div class="row py-4">
-        <div class="col-12 col-sm-6 col-lg-3 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/600/400/?blur=2" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Escuela 1</h3>
-                    <p class="card-subtitle text-muted mb-2">
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star-half-alt"></i>
-                        <i class="icon-star-empty"></i>
-                    </p>
-                    <p class="card-text ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium similique vero perferendis dolorem in libero id omnis, esse nesciunt corrupti?
-                    </p>
-                    <a href="#" class="card-link ">Detalle</a>
+                        <button type="button" id="imgCard1" class="btn btn-primary card-link" class="buttonDetalle" data-toggle="modal" data-target="#ventana1">
+                            Detalle
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/600/400/?blur=3" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Escuela 1</h3>
-                    <p class="card-subtitle text-muted mb-2">
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star-half-alt"></i>
-                        <i class="icon-star-empty"></i>
-                    </p>
-                    <p class="card-text ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium similique vero perferendis dolorem in libero id omnis, esse nesciunt corrupti?
-                    </p>
-                    <a href="#" class="card-link ">Detalle</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/600/400/?blur=4" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Escuela 1</h3>
-                    <p class="card-subtitle text-muted mb-2">
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star-half-alt"></i>
-                        <i class="icon-star-empty"></i>
-                    </p>
-                    <p class="card-text ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium similique vero perferendis dolorem in libero id omnis, esse nesciunt corrupti?
-                    </p>
-                    <a href="#" class="card-link ">Detalle</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/600/400/?blur=5" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Escuela 1</h3>
-                    <p class="card-subtitle text-muted mb-2">
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star-half-alt"></i>
-                        <i class="icon-star-empty"></i>
-                    </p>
-                    <p class="card-text ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium similique vero perferendis dolorem in libero id omnis, esse nesciunt corrupti?
-                    </p>
-                    <a href="#" class="card-link ">Detalle</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/600/400/?blur=6" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Escuela 1</h3>
-                    <p class="card-subtitle text-muted mb-2">
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star-half-alt"></i>
-                        <i class="icon-star-empty"></i>
-                    </p>
-                    <p class="card-text ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium similique vero perferendis dolorem in libero id omnis, esse nesciunt corrupti?
-                    </p>
-                    <a href="#" class="card-link ">Detalle</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/600/400/?blur=7" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Escuela 1</h3>
-                    <p class="card-subtitle text-muted mb-2">
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star-half-alt"></i>
-                        <i class="icon-star-empty"></i>
-                    </p>
-                    <p class="card-text ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium similique vero perferendis dolorem in libero id omnis, esse nesciunt corrupti?
-                    </p>
-                    <a href="#" class="card-link ">Detalle</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-3 mb-4">
-            <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/600/400/?blur=8" class="card-img-top img-fluid" alt="">
-                <div class="card-body">
-                    <h3 class="card-title">Escuela 1</h3>
-                    <p class="card-subtitle text-muted mb-2">
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star"></i>
-                        <i class="icon-star-half-alt"></i>
-                        <i class="icon-star-empty"></i>
-                    </p>
-                    <p class="card-text ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium similique vero perferendis dolorem in libero id omnis, esse nesciunt corrupti?
-                    </p>
-                    <a href="#" class="card-link ">Detalle</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="row">
 
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="py-4 border-bottom">
-                <h1 class="btn-primary text-center col-sm-12">Galeria</h1>
-                <a href="#" class="btn btn-primary col-sm-3 text-center">Ver Mas colegios</a>
+
+        </div>
+        <!-- Ventana Emergente -->
+        <div class="modal fade" id="ventana1" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalTitle">Escuela 1</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                        <img class="card-img-top" id="imgeModal" src="https://picsum.photos/600/400/" class="card-img-top img-fluid" alt="">
+                        <p><br></p>
+                        <div>
+                            <h4>Calificación</h4>
+                            <p class="card-subtitle text-muted mb-2">
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star"></i>
+                                <i class="icon-star-half-alt"></i>
+                                <i class="icon-star-empty"></i>
+                            </p>
+                        </div>
+
+                        <div class="container">
+                            <div class="form-group row">
+                                <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticDireccion" value="San Manuel 121, Maipú, Región Metropolitana">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="email@example.com">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="+56 2 2537 0291">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" id="staticTipo" value="email@example.com">
+                                </div>
+                            </div>
+                            <p id="paragraphBody">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-12 ">
+                <div class="py-4 border-bottom ">
+                    <a href="galeria.html " class="btn btn-primary col-sm-12 text-center ">Ver Mas colegios</a>
+                </div>
             </div>
         </div>
     </div>
 
     </main>
+    <!-- FIN GALERIA -->
 
-
+    <!-- FOOTER -->
     <footer>
-        <section id="final">
-            <div class="contenedor">
-                <p class="copy"> COLEGIOS &copy; 2019 </p>
+        <section id="final ">
+            <div class="contenedor ">
+                <p class="copy "> COLEGIOS &copy; 2019 </p>
                 <div class="contact ">
-                    <a tabindex="7 " class="icon-phone-outline" href="# "></a>
-                    <a tabindex="8 " class="icon-mail" href="# "></a>
+                    <a tabindex="7 " class="icon-phone-outline " href="# "></a>
+                    <a tabindex="8 " class="icon-mail " href="# "></a>
                 </div>
             </div>
         </section>
@@ -269,10 +205,8 @@
 
 
     <!-- Seccion Script  -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
-    <script src="js/main.js "></script>
 </body>
 
 </html>
