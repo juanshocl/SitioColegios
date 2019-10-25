@@ -1,7 +1,7 @@
 from django.http import  HttpResponse
 from django.template import Template, Context
 
-def saludo(request):
+def index(request):
      doc_externo=open("/Users/juanshocl/Documents/GitHub/SitioColegios/SitioColegios/SitioColegios/SitioColegios/Templates/index.html")
      plt_index = Template(doc_externo.read())      
      doc_externo.close()
