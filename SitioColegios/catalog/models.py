@@ -31,7 +31,7 @@ class state_province(models.Model):
 class School(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     Name = models.CharField(max_length=40)
-    RatingShool = models.IntegerField()
+    RatingShool = models.FloatField() #models.FloatField(null=True, blank=True, default=None)
     ImageMD = models.ImageField(upload_to='photos/modal')
     ImageProfile = models.ImageField(upload_to='photos/profile')
     Address = models.CharField(max_length=60)

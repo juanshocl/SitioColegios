@@ -24,5 +24,5 @@ urlpatterns = [
     # path('index/', index),
     # path('adios/', despedida),
     path ('catalog/', include('catalog.urls')), #aplicacion de catalogo de colegios.
-
+    #path('', views.index, name='home'),
 ]
