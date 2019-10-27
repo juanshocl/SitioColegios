@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from SitioColegios.views import index, despedida, ingreso, formulario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ingreso/', ingreso),
+    path('contacto/', formulario),
+    path('index/', index),
+    path('adios/', despedida),
+    path ('catalog/', include('catalog.urls')),
 ]
