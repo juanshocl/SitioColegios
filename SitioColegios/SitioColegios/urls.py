@@ -17,16 +17,23 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-#from SitioColegios.views import index, despedida, ingreso, formulario
+from SitioColegios.views import index, despedida, ingreso, formulario
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index, name='index'),
     # path('ingreso/', ingreso),
     # path('contacto/', formulario),
     # path('index/', index),
     # path('adios/', despedida),
     path ('catalog/', include('catalog.urls')), #aplicacion de catalogo de colegios.
     #path('', views.index, name='home'),
+
 ]
+# patterns('',
+#     url(r'^', include('home.urls')),
+
+# )
 
 urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
