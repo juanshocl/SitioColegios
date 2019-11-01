@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title> COLEGIOSPARATODOS </title>
-    <link rel="icon" href="imagenes/logo-100.png">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="script" href="js/script.js">
+    {% comment %} <link rel="icon" href="imagenes/logo-100.png"> {% endcomment %}
+     {% load static from staticfiles %}
+    <link rel="stylesheet" href="{% static "css/estilos.css" %}">
+    <link rel="script" href="{% static "js/script.js" %}">
 
     <!-- bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="{% static "css/fontello.css" %}">
 
 </head>
 
@@ -92,7 +93,7 @@
                     </button>
                         </div>
                         <div class="modal-body" id="modalBody">
-                            <img class="card-img-top" id="imgeModal" src="imagenes/colegio1-vm.png" class="card-img-top img-fluid" alt="">
+                            <img class="card-img-top card-img-top img-fluid" id="imgeModal" src="{% static "imagenes/colegio1-vm.png" %}" class="" alt="">
                             <p><br></p>
                             <div>
                                 <h4>Calificación</h4>
@@ -151,7 +152,7 @@
                                 </button>
                         </div>
                         <div class="modal-body" id="modalBody">
-                            <img class="card-img-top" id="imgeModal" src="imagenes/colegio2-vm.png" class="card-img-top img-fluid" alt="">
+                            <img class="card-img-top" id="imgeModal" src="{% static "imagenes/colegio2-vm.png" %}" class="card-img-top img-fluid" alt="">
                             <p><br></p>
                             <div>
                                 <h4>Calificación</h4>
@@ -209,7 +210,7 @@
                         </button>
                         </div>
                         <div class="modal-body" id="modalBody">
-                            <img class="card-img-top" id="imgeModal" src="imagenes/colegio3-vm.png" class="card-img-top img-fluid" alt="">
+                            <img class="card-img-top" id="imgeModal" src="{% static "imagenes/colegio3-vm.png" %}" class="card-img-top img-fluid" alt="">
                             <p><br></p>
                             <div>
                                 <h4>Calificación</h4>
@@ -265,7 +266,7 @@
                         </button>
                         </div>
                         <div class="modal-body" id="modalBody">
-                            <img class="card-img-top" id="imgeModal" src="imagenes/colegio1-vm.png" class="card-img-top img-fluid" alt="">
+                            <img class="card-img-top" id="imgeModal" src="{% static "imagenes/colegio1-vm.png" %}" class="card-img-top img-fluid" alt="">
                             <p><br></p>
                             <div>
                                 <h4>Calificación</h4>
