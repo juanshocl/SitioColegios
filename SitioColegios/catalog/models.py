@@ -23,7 +23,7 @@ class User(models.Model):
 
 class state_province(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    Name = models.CharField(max_length=25)
+    NameSP = models.CharField(max_length=25)
     
     def __str__(self):
         return str(self.Id)      
@@ -35,10 +35,10 @@ class School(models.Model):
     ImageMD = models.ImageField(upload_to='static/img//modal')
     ImageProfile = models.ImageField(upload_to='static/img/profile')
     Address = models.CharField(max_length=60)
-    State_Province = models.OneToOneField(state_province, on_delete=models.CASCADE)
+    State_Province = models.ForeignKey(state_province, on_delete=models.CASCADE) # relacion muchos a uno
     Phone = models.CharField(max_length=12)
     Type = models.ForeignKey(SchoolType, on_delete=models.CASCADE)
-    Review = models.TextField(max_length=200)
+    Review = models.TextField(max_length=1500)
 
     def __str__(self):
         return str(self.Id)
