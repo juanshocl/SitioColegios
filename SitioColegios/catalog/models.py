@@ -61,3 +61,6 @@ class Ratings(models.Model):
 
     def __str__(self):
         return str(self.Id)
+    
+    def get_School(self):
+            return "\n".join([s.Shool for s in self.Schools.all()])

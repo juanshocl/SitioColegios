@@ -44,13 +44,12 @@ class UserAdmin(admin.ModelAdmin):
         return(obj.Name+' '+obj.Last_Name)
 
     get_name.short_description = 'Nombre'
-    #pass
 
 admin.site.register(User, UserAdmin)
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('get_email','get_user','Rating', 'User')
-
+    list_display = ('get_email','get_user','Rating')
+    
     def get_user(self, obj):
         return obj.User.Name+' '+obj.User.Last_Name
     get_user.short_description = 'Usuario'
