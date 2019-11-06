@@ -3,14 +3,10 @@ from django.contrib import admin
 # Register your models here.
 from . models import SchoolType, User, state_province, School, Ratings
 
-# admin.site.register(SchoolType)
-#admin.site.register(User)
-#admin.site.register(state_province)
-# admin.site.register(School)
-#admin.site.register(Ratings)
-
 class SchoolAdmin(admin.ModelAdmin):
     list_display = ('Name', 'RatingShool', 'Address', 'get_name', 'Phone', 'get_typeName')
+    list_filter = ('Name', 'RatingShool', 'State_Province')
+    fields = ['Name', ('ImageMD', 'ImageProfile'), 'Address', 'State_Province', 'Phone', 'Type', 'Review']
    
     def get_name(self, obj):
         return obj.State_Province.NameSP

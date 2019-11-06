@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
-from SitioColegios.views import index, galeria, ingreso, formulario
+from SitioColegios.views import index, galeria
 from . import views
 
 urlpatterns = [
@@ -28,18 +28,5 @@ urlpatterns = [
     # path('contacto/', formulario),
     # path('index/', index),
     # path('adios/', despedida),
-    path ('catalog/', include('catalog.urls')), #aplicacion de catalogo de colegios.
+    #path ('catalog/', include('catalog.urls')), #aplicacion de catalogo de colegios.
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
-# #DEBUGING
-# if settings.DEBUG:
-#     import debug_toolbar
-#     urlpatterns = [
-#         path('__debug__/', include(debug_toolbar.urls)),
-
-#         # For django versions before 2.0:
-#         # url(r'^__debug__/', include(debug_toolbar.urls)),
-
-#     ] + urlpatterns
-
-# #END DEBUG

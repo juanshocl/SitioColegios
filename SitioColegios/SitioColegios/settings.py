@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 from unipath import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = Path(__file__).ancestor(3)
+BASE_DIR = Path(__file__).ancestor(2)
 
 
 # Quick-start development settings - unsuitable for production
@@ -38,11 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
-    # 'debug_toolbar', #DEBUG
 ]
 
 MIDDLEWARE = [
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware', #DEBUG
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,8 +55,8 @@ ROOT_URLCONF = 'SitioColegios.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates/',],
-
+        'DIRS': [BASE_DIR.child('templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,13 +122,6 @@ USE_TZ = True
 STATIC_URL =  '/static/'
 
 STATICFILES_DIRS = [
-   BASE_DIR.child('static'),
-   'static'
+    BASE_DIR.child('static'),
+    'static'
 ]
-# #DEBUGER
-# INTERNAL_IPS = [
-#     # ...
-#     '127.0.0.1',
-#     # ...
-# ]
-# #END DEBUG
