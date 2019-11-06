@@ -48,22 +48,6 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(User, UserAdmin)
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('get_email','get_user','Rating')
-    
-    def get_user(self, obj):
-        return obj.User.Name+' '+obj.User.Last_Name
-    get_user.short_description = 'Usuario'
-    
-    def get_email(self, obj):
-        return obj.User.Email
-    get_email.short_description = 'Email'
-
-    # def get_School(self, obj):
-
-    #    return Ratings.objects.filter(Id='d1b6a49a-dab5-4c12-baad-798799dcd499').Schools.Id
-
-       # return obj.Schools.get(Id='d1b6a49a-dab5-4c12-baad-798799dcd499').Name
-        # obj.Schools.get(Id=obj.User).Name
-   # get_School.short_description = 'Escuela'
+    list_display = ('get_email','get_user','Rating', 'display_School') 
 
 admin.site.register(Ratings, RatingAdmin)

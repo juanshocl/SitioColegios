@@ -55,12 +55,21 @@ class Ratings(models.Model):
         (5, '5'),
     )
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    User = models.OneToOneField(User, on_delete=models.CASCADE)
+    User = models.ManyToManyField(User)
     Rating = models.IntegerField(choices=RATING)
     Schools = models.ManyToManyField(School)
 
     def __str__(self):
         return str(self.Id)
     
-    def get_School(self):
-            return "\n".join([s.Shool for s in self.Schools.all()])
+    def display_School(self):
+        return ', '.join([ Schools.Name for Schools in self.Schools.all()[:3] ])
+    display_School.short_description = 'Escuela'
+
+    def get_user(self):
+        return ', '.join([ User.Name for User in self.User.all()[:3] ])+' '+ ', '.join([User.Last_Name for User in self.User.all()[:3] ])
+    get_user.short_description = 'Usuario'
+
+    def get_email(self):
+        return ', '.join([ User.Email for User in self.User.all()[:3] ])
+    get_user.short_description = 'Email'
