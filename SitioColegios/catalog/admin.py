@@ -4,17 +4,13 @@ from django.contrib import admin
 from . models import SchoolType, User, state_province, School, Ratings
 
 class SchoolAdmin(admin.ModelAdmin):
-    list_display = ('Name', 'RatingShool', 'Address', 'get_name', 'Phone', 'get_typeName')
-    list_filter = ('Name', 'RatingShool', 'State_Province')
+    list_display = ('Name', 'RatingShool', 'Address', 'get_State', 'Phone', 'get_typeName')
+    list_filter = ('Name', 'RatingShool', 'State_Province', 'Type')
     fields = ['Name', ('ImageMD', 'ImageProfile'), 'Address', 'State_Province', 'Phone', 'Type', 'Review']
-   
-    def get_name(self, obj):
-        return obj.State_Province.NameSP
-    get_name.short_description = 'Comuna'
 
-    def get_typeName(self, obj):
-        return obj.Type.Description
-    get_typeName.short_description = 'Tipo Establecimiento'
+    # def get_typeName(self, obj):
+    #     return obj.Type.Description
+    # get_typeName.short_description = 'Tipo Establecimiento'
 
 admin.site.register(School, SchoolAdmin)
 

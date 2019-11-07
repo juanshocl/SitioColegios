@@ -5,24 +5,24 @@ from django.shortcuts import render
 
 
 def index(request):
-     #doc_externo=open("/Users/juanshocl/Documents/GitHub/SitioColegios/SitioColegios/templates/home/index.html")
-     # plt_index = Template(doc_externo.read())      
-     # doc_externo.close()
-     # contexto  = Context()
-     # documento= plt_index.render(contexto)
-     # return HttpResponse(documento)
+     SchooName = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Name
+     imagen_profile = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').ImageProfile
+     imagen_modal = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').ImageMD
+     address = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Address
+     phone = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Phone
+     review = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Review
+     state_province = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').State_Province.NameSP
+     school_type = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Type.Description
+     # direccion = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Address
+
      return render(
           request,
           'index.html',
-          context={},
+          context={'SchooName': SchooName, 'imagen_modal':imagen_modal, 'imagen_profile': imagen_profile, 'address':address, 'phone': phone, 'review':review, 'state_province':state_province, 'school_type':school_type},
      )
 
 
 def galeria(request):
-     # doc_galeria = open("/Users/juanshocl/Documents/GitHub/SitioColegios/SitioColegios/templates/galeria/galeria.html")
-     # plt_galeria = Template(doc_galeria.read())
-     # doc_galeria.close()
-     # return HttpResponse(plt_galeria.render(Context())) 
      return render(
      request,
      'galeria/galeria.html',
