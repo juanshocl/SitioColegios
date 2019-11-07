@@ -14,11 +14,11 @@ def index(request):
      state_province = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').State_Province.NameSP
      school_type = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Type.Description
      # direccion = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Address
-
+     School_instance = School.objects.all()
      return render(
           request,
           'index.html',
-          context={'SchooName': SchooName, 'imagen_modal':imagen_modal, 'imagen_profile': imagen_profile, 'address':address, 'phone': phone, 'review':review, 'state_province':state_province, 'school_type':school_type},
+          context={'SchooName': SchooName, 'imagen_modal':imagen_modal, 'imagen_profile': imagen_profile, 'address':address, 'phone': phone, 'review':review, 'state_province':state_province, 'school_type':school_type, 'School_instance': School_instance},
      )
 
 
