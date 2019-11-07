@@ -11,6 +11,15 @@ class SchoolAdmin(admin.ModelAdmin):
     # def get_typeName(self, obj):
     #     return obj.Type.Description
     # get_typeName.short_description = 'Tipo Establecimiento'
+    def get_State(self, obj):
+        return obj.State_Province.NameSP
+    get_State.short_description = 'Comuna'
+
+    def get_typeName(self, obj):
+        return obj.Type.Description
+    #     return ', '.join([ Type.Description for Typedescription in self.Type.all()[:3] ])
+    # return ', '.join([ User.Email for User in self.User.all()[:3] ])
+    get_typeName.short_description = 'Tipo Establecimiento'
 
 admin.site.register(School, SchoolAdmin)
 

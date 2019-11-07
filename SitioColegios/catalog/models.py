@@ -7,6 +7,7 @@ from django.db.models import Avg
 class SchoolType(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     Description = models.CharField(max_length=20)
+    
 
     def __str__(self):
         return str(self.Id)
@@ -47,21 +48,11 @@ class School(models.Model):
     def average_rating(self):
         return self.review_set.aggregate(Avg('Rating'))['rating__avg'] #Promedio de las evaluaciones.
     
-    
-    
     # def get_State(self):
     #     return self.objects.get(Id=Id).
     #     School.objects.get
     #     self.State_Province.description
     # get_State.short_description = 'Nombre Comuna'
-    
-    # def get_State(self):
-    #     return self.State_Province.Description
-    # get_State.short_description = 'Comuna'
-
-    def get_typeName(self):
-        return ', '.join([ Type.Description for Typedescription in self.Type.all()[:3] ])
-    get_typeName.short_description = 'Tipo Establecimiento'
 
 class Ratings(models.Model):
     RATING = (
