@@ -55,15 +55,16 @@
     {% block cards %}
     <div class="container">
         <!--Colegio N1-->
-        <div class="row py-4">
+        <div class="card-deck">
             {% for colegio in School_instance %}    
-            <div class="col-12 col-sm-6 col-lg-3 mb-4">
+            <div class="col-12 col-sm-6 col-lg-4 mb-4">
                 <div class="card">
                     {% load static from staticfiles %}
                     <img class="card-img-top" id="imgCard1" src="{{ colegio.ImageProfile }}" class="card-img-top img-fluid" alt="">
                     <div class="card-body">
                         <h3 class="card-title" id="cardID">{{colegio.Name}}</h3>
                         <p class="card-subtitle text-muted mb-2">
+                            {% comment %} {{rating(colegio.Id)}} {% endcomment %}
                             <i class="icon-star"></i>
                             <i class="icon-star"></i>
                             <i class="icon-star"></i>
@@ -74,9 +75,9 @@
                         </p>
 
                         <button type="button" id="imgCard1" class="btn btn-primary card-link" class="buttonDetalle" data-toggle="modal" data-target="#{{colegio.Id}}">
-                        <!--Realizar modificar se deben crear una ventana modal para cada colegio-->
                         Detalle
                     </button>
+                    
                     </div>
                 </div>
             </div>
