@@ -16,10 +16,11 @@ def index(request):
      # direccion = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Address
      # rating = School.average_rating
      School_instance = School.objects.all()
+     score = 'Hola'
      return render(
           request,
           'index.html',
-          context={'School_instance': School_instance},
+          context={'School_instance': School_instance,'score': score},
      )
 
 

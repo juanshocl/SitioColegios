@@ -4,8 +4,8 @@ from django.contrib import admin
 from . models import SchoolType, User, state_province, School, Ratings
 
 class SchoolAdmin(admin.ModelAdmin):
-    list_display = ('Name', 'RatingShool', 'Address', 'get_State', 'Phone', 'get_typeName')
-    list_filter = ('Name', 'RatingShool', 'State_Province', 'Type')
+    list_display = ('Name', 'Score', 'Address', 'get_State', 'Phone', 'get_typeName')
+    list_filter = ('Name', 'Score', 'State_Province', 'Type')
     fields = ['Name', ('ImageMD', 'ImageProfile'), 'Address', 'State_Province', 'Phone', 'Type', 'Review']
 
     # def get_typeName(self, obj):
@@ -49,6 +49,6 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(User, UserAdmin)
 
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('get_email','get_user','Rating', 'display_School') 
-
+    # list_display = ('get_email','get_user','Score', 'display_School') 
+    list_display = ('get_email','get_user','Score', 'display_School') 
 admin.site.register(Ratings, RatingAdmin)
