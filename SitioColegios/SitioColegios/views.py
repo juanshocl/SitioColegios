@@ -16,15 +16,19 @@ def index(request):
      # direccion = School.objects.get(Id='bbd6a97a-ce81-4368-93ce-eb95dfc90fad').Address
      # rating = School.average_rating
      School_instance = School.objects.all()
-     score = 'Hola'
+     # score = School.objects.get(self. Id=Ratings.Id).Name
+     # score = School.objects.get
+     score = "%01.1f" % 3.5
+     loop_range = range (1,6)
      return render(
           request,
           'index.html',
-          context={'School_instance': School_instance,'score': score},
+          context={'School_instance': School_instance,'score': score,'loop_range': loop_range},
      )
 
 
 def galeria(request):
+     
      return render(
      request,
      'galeria/galeria.html',

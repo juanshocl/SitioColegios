@@ -32,7 +32,7 @@ class state_province(models.Model):
 class School(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     Name = models.CharField(max_length=40)
-    Score = models.FloatField(null=True, blank=True, default=None) #models.FloatField(null=True, blank=True, default=None)
+    Score = models.FloatField(max_digits=2, null=True, blank=True, default=None, decimal_places=2) #models.FloatField(null=True, blank=True, default=None)
     ImageMD = models.ImageField(upload_to='static/img//modal')
     ImageProfile = models.ImageField(upload_to='static/img/profile')
     Address = models.CharField(max_length=60)
@@ -45,8 +45,9 @@ class School(models.Model):
         return str(self.Id)
 
     def score_avg(self):
+        mensaje = "Hola que hace"
         # rat = Ratings.objects.filter(Ratings.Schools = self.Id).all()
-        return 'Hola que hace' #Ratings.objects.filter(Ratings = self.Id).count()
+        return "HOLAAAA" #Ratings.objects.filter(Ratings = self.Id).count()
     
     # def promedio(self):
     #     for item in Ratings:

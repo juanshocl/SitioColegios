@@ -7,7 +7,7 @@ class SchoolAdmin(admin.ModelAdmin):
     list_display = ('Name', 'Score', 'Address', 'get_State', 'Phone', 'get_typeName')
     list_filter = ('Name', 'Score', 'State_Province', 'Type')
     fields = ['Name', ('ImageMD', 'ImageProfile'), 'Address', 'State_Province', 'Phone', 'Type', 'Review']
-
+    
     # def get_typeName(self, obj):
     #     return obj.Type.Description
     # get_typeName.short_description = 'Tipo Establecimiento'

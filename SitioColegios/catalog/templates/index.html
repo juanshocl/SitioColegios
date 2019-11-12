@@ -59,17 +59,26 @@
             {% for colegio in School_instance %}    
             <div class="col-12 col-sm-6 col-lg-4 mb-4">
                 <div class="card">
-                    {% load static from staticfiles %}
+                    {% comment %} {% load static from staticfiles %} {% endcomment %}
                     <img class="card-img-top" id="imgCard1" src="{{ colegio.ImageProfile }}" class="card-img-top img-fluid" alt="">
                     <div class="card-body">
                         <h3 class="card-title" id="cardID">{{colegio.Name}}</h3>
                         <p class="card-subtitle text-muted mb-2">
-                            {{score}}
-                            <i class="icon-star"></i>
-                            <i class="icon-star"></i>
+                        {{score}}
+                        {% for i in loop_range%}
+                            {% comment %} <h6>{{i}}</h6> {% endcomment %}
+                            {% comment %} <h6>{{score}}</h6> {% endcomment %}
+                            {% if i <= int(score) %}
+                                <i class="icon-star"></i>
+                            {% else %}
+                                <i class="icon-star-empty"></i>    
+                            {% endif %} 
+                        {% endfor %}
+                            {% comment %} <i class="icon-star"></i>
                             <i class="icon-star"></i>
                             <i class="icon-star-half-alt"></i>
                             <i class="icon-star-empty"></i>
+                            {{score}} {% endcomment %}
                         </p>
                         <p class="card-text" id="shortDescription"><br>{{colegio.Review|truncatechars:250 }}
                         </p>
