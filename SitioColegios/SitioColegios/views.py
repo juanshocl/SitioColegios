@@ -18,7 +18,7 @@ def index(request):
      School_instance = School.objects.all()
      # score = School.objects.get(self. Id=Ratings.Id).Name
      # score = School.objects.get
-     score = "%01.1f" % 3.5
+     score = 3.5 #School.objects.get(Id= 'ab6e52a8-088c-43ea-979d-1698e0f3f66d').Score 
      loop_range = range (1,6)
      return render(
           request,
