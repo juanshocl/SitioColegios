@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'), #Vista estatica del index
     path('galeria/', views.galeria, name='galeria'),
+    path('evaluar/', views.evaluar, name='evaluar'),
     # path('ingreso/', ingreso),
     # path('contacto/', formulario),
     # path('index/', index),

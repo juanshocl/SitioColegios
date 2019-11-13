@@ -88,3 +88,11 @@ body {
 .card-footer {
     font-size: 0.8rem;
 }
+
+.navbar .dropdown-menu .form-control {
+    width: 200px;
+}
+
+button:focus {
+    outline: 0;
+}
