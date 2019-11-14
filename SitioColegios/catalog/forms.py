@@ -20,7 +20,7 @@ class SchoolForm(forms.ModelForm):
         ]
         labels = {
             'Name': 'Nombre',
-            'Score': 'Evaluacion',
+            'Score': 'Valoracion',
             'ImageMD': 'Imagen Grande',
             'ImageProfile': 'Imagen Perfil',
             'Address': 'Dirección',
@@ -32,13 +32,13 @@ class SchoolForm(forms.ModelForm):
         widgets = {
             'Name': forms.TextInput(attrs={'class':'form-control'}),
             'Score': forms.TextInput(attrs={'class':'form-control'}),
-            'ImageMD': forms.TextInput(attrs={'class':'form-control'}),
-            'ImageProfile': forms.TextInput(attrs={'class':'form-control'}),
+            'ImageMD': forms.FileInput(attrs={'class':'form-control'}),
+            'ImageProfile': forms.FileInput(attrs={'class':'form-control'}),
             'Address': forms.TextInput(attrs={'class':'form-control'}),
             'State_Province': forms.Select(attrs={'class':'form-control'}),
             'Phone': forms.TextInput(attrs={'class':'form-control'}),
             'Type': forms.Select(attrs={'class':'form-control'}),
-            'Review': forms.TextInput(attrs={'class':'form-control'}),
+            'Review': forms.Textarea(attrs={'class':'form-control'}),
         }
 class RatingsForm(forms.ModelForm):
     
@@ -46,13 +46,11 @@ class RatingsForm(forms.ModelForm):
         model = Ratings
 
         fields = [
-            # Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
             'User',
             'Score',
             'Schools',
         ]
         labels = {
-            # Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
             'User': 'Usuario',
             'Score': 'Evaluacion',
             'Schools': 'Colegio',
@@ -61,6 +59,5 @@ class RatingsForm(forms.ModelForm):
             'User': forms.Select(attrs={'class':'form-control'}),
             'Score': forms.Select(attrs={'class':'form-control'}),
             'Schools': forms.Select(attrs={'class':'form-control'}),
-
         }
         

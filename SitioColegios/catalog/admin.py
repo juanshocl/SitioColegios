@@ -4,7 +4,7 @@ from django.contrib import admin
 from . models import SchoolType, User, state_province, School, Ratings
 
 class SchoolAdmin(admin.ModelAdmin):
-    list_display = ('Name', 'Score', 'Address', 'get_State', 'Phone', 'get_typeName')
+    list_display = ('Id', 'Name', 'Score', 'Address', 'get_State', 'Phone', 'get_typeName')
     list_filter = ('Name', 'Score', 'State_Province', 'Type')
     fields = ['Name', ('ImageMD', 'ImageProfile'), 'Address', 'State_Province', 'Phone', 'Type', 'Review']
     

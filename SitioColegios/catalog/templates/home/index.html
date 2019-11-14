@@ -57,10 +57,11 @@
     <div class="container">
         <!--Colegio N1-->
         <div class="card-deck">
-            {% for colegio in School_instance %}    
+           {% if  School_instance%}
+                       {% for colegio in School_instance %}    
             <div class="col-12 col-sm-6 col-lg-4 mb-4">
                 <div class="card">
-                    <img class="card-img-top" id="imgCard1" src="{{ colegio.ImageProfile }}" class="card-img-top img-fluid" alt="">
+                    <img class="card-img-top" id="img{{colegio.Id}}" src="{{ colegio.ImageProfile }}" class="card-img-top img-fluid" alt="">
                     <div class="card-body">
                         <h3 class="card-title" id="cardID">{{colegio.Name}}</h3>
                         <p class="card-subtitle text-muted mb-2">
@@ -72,18 +73,21 @@
                             {% endif %} 
                         {% endfor %}
                         </p>
-                        <p class="card-text" id="shortDescription"><br>{{colegio.Review|truncatechars:250 }}
+                        <p class="card-text" id="shortDescription"><br>{{colegio.Review|truncatechars:200 }}
                         </p>
 
-                        <button type="button" id="imgCard1" class="btn btn-primary card-link" class="buttonDetalle" data-toggle="modal" data-target="#{{colegio.Id}}">
+                        <button type="button" id="btn{{colegio.Id}}" class="btn btn-primary card-link" class="buttonDetalle" data-toggle="modal" data-target="#{{colegio.Id}}">
                         Detalle
                     </button>
                     
                     </div>
                 </div>
             </div>
-            <!--Fin Colegio 1-->
+            <!--Fin Colegio -->
             {% endfor %}
+            {% else %}
+            <h1>No hay registros que mostrar</h1>
+           {% endif %}
         </div>
         {% for colegio in School_instance %}  
         <!-- Ventana Emergente colegio 1-->
@@ -102,11 +106,13 @@
                         <div>
                             <h4>Calificación</h4>
                             <p class="card-subtitle text-muted mb-2">
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star"></i>
-                                <i class="icon-star-half-alt"></i>
-                                <i class="icon-star-empty"></i>
+                            {% for i in loop_range%}
+                                {% if i <= colegio.Score %}
+                                    <i class="icon-star"></i>
+                                {% else %}
+                                    <i class="icon-star-empty"></i>    
+                                {% endif %} 
+                            {% endfor %}
                             </p>
                         </div>
 

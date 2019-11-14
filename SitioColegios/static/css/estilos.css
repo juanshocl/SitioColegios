@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(main.css);
-@import url(final.css);
 @import url(galeria.css);
 @import url(newgaleria.css);
 body {
@@ -96,3 +95,12 @@ body {
 button:focus {
     outline: 0;
 }
+
+#final {
+    background: lightblue;
+    color: black;
+    text-align: center;
+}
+
+
+/* Ventana modal eliminar */
