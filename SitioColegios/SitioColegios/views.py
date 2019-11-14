@@ -1,8 +1,9 @@
-from catalog.models import SchoolType, User, state_province, School, Ratings
 from django.http import  HttpResponse 
 from django.template import Template, Context
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+from catalog.models import SchoolType, User, state_province, School, Ratings
+from catalog.forms import SchoolForm, RatingsForm
 
 def index(request):
      School_instance = School.objects.all()
@@ -22,10 +23,19 @@ def galeria(request):
 )
 
 def evaluar(request):
+     if request.method == 'POST':
+          form = RatingsForm(request.POST)
+          if form.is_valid():
+               
+               form.save()
+          return redirect('index')
+     else:
+          form = RatingsForm()
+
      return render(
      request,
      'evaluar/evaluacion.html',
-     context={},
+     context={'form': form},
 )
 
 def ingreso(request):

@@ -51,4 +51,5 @@ admin.site.register(User, UserAdmin)
 class RatingAdmin(admin.ModelAdmin):
     # list_display = ('get_email','get_user','Score', 'display_School') 
     list_display = ('get_email','get_user','Score', 'display_School') 
+    list_filter = ('User', 'Score', 'Schools')
 admin.site.register(Ratings, RatingAdmin)

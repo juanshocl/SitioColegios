@@ -8,9 +8,8 @@ class SchoolType(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     Description = models.CharField(max_length=20)
     
-
     def __str__(self):
-        return str(self.Id)
+        return str(self.Description)
 
 class User(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -20,14 +19,14 @@ class User(models.Model):
     Last_Name = models.CharField(max_length=15)
     
     def __str__(self):
-        return str(self.Id)
+        return str(self.Email)
 
 class state_province(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     NameSP = models.CharField(max_length=25)
     
     def __str__(self):
-        return str(self.Id)      
+        return str(self.NameSP)      
 
 class School(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -42,7 +41,7 @@ class School(models.Model):
     Review = models.TextField(max_length=2000)
 
     def __str__(self):
-        return str(self.Id)
+        return str(self.Name)
 
     def score_avg(self):
         mensaje = "Hola que hace"
@@ -86,8 +85,9 @@ class Ratings(models.Model):
     Schools = models.ForeignKey(School, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        return str(self.Id)
-    
+         return str(self.User)
+        #return
+
     def display_School(self):
         return self.Schools.Name
         #', '.join([ Schools.Name for Schools in self.Schools.all()[:3] ])
