@@ -9,7 +9,7 @@ class SchoolForm(forms.ModelForm):
 
         fields = [
             'Name',
-            'Score',
+            # 'Score',
             'ImageMD',
             'ImageProfile',
             'Address',
@@ -20,7 +20,7 @@ class SchoolForm(forms.ModelForm):
         ]
         labels = {
             'Name': 'Nombre',
-            'Score': 'Valoracion',
+            # 'Score': 'Valoracion',
             'ImageMD': 'Imagen Grande',
             'ImageProfile': 'Imagen Perfil',
             'Address': 'Dirección',
@@ -31,7 +31,7 @@ class SchoolForm(forms.ModelForm):
         }
         widgets = {
             'Name': forms.TextInput(attrs={'class':'form-control'}),
-            'Score': forms.TextInput(attrs={'class':'form-control'}),
+            # 'Score': forms.TextInput(attrs={'class':'form-control'}),
             'ImageMD': forms.FileInput(attrs={'class':'form-control'}),
             'ImageProfile': forms.FileInput(attrs={'class':'form-control'}),
             'Address': forms.TextInput(attrs={'class':'form-control'}),

@@ -47,29 +47,6 @@ class School(models.Model):
         mensaje = "Hola que hace"
         # rat = Ratings.objects.filter(Ratings.Schools = self.Id).all()
         return "HOLAAAA" #Ratings.objects.filter(Ratings = self.Id).count()
-    
-    # def promedio(self):
-    #     for item in Ratings:
-#######return ', '.join([ Schools.Name for Schools in self.Schools.all()[:3] ])
-
-
-    #     return rating_prom
-
-    # def average_rating(self):
-    #     for item in Ratings:
-    #         prom = Ratings.objects.filter(Ratings.Id =  self.Id).aggregate(Avg('Rating'))
-    #     return prom
-        # for rating in Ratings:
-        #     prom = Ratings.objects.filter(rating=Ratings.Id).aggregate(Avg('Rating'))
-        # # promedio = Ratings.objects.filter(', '.join([ Schools.Id for Schools in self.Schools.all()[:3] ]). = id).aggregate(Avg('Rating'))
-        # return prom.__avg #School.objects.filter(Id=Ratings.Id).aggregate(Avg('Ratings.Rating'))
-        # # return self.review_set.aggregate(Avg('Rating'))['rating__avg'] #Promedio de las evaluaciones.
-    
-    # def get_State(self):
-    #     return self.objects.get(Id=Id).
-    #     School.objects.get
-    #     self.State_Province.description
-    # get_State.short_description = 'Nombre Comuna'
 
 class Ratings(models.Model):
     RATING = (

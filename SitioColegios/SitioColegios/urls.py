@@ -18,7 +18,7 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
-from SitioColegios.views import index, galeria, evaluar, school_edit, school_list
+from SitioColegios.views import index, galeria, evaluar, school_edit, school_listar
 from . import views
 
 urlpatterns = [
@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^$', views.index, name='index'), #Vista estatica del index
     url(r'^galeria$', views.galeria, name='galeria'),
     url(r'^evaluar$', views.evaluar, name='crear_evaluacion'),
-    url(r'^listar$', views.school_list, name='school_list'),
+    url(r'^listar$', views.school_listar, name='school_listar'),
     url(r'^editar/(?P<id_School>\d+)/$', views.school_edit, name='school_editar'),
     url(r'^nuevo', views.school_view, name='school_view'),
     #path ('catalog/', include('catalog.urls')), #aplicacion de catalogo de colegios.
