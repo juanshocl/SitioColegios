@@ -4,7 +4,7 @@
         {% csrf_token %} 
         <h3>¿Desea eliminar el registro de {{colegio.Name}}?</h3>
         <button class="btn btn-danger" type="submit">Si</button>
-        <a class="btn btn-default" href="{% url 'school_listar'%}"> </a>
+        <a class="btn btn-primary" href="{% url 'school_listar'%}">Cancelar</a>
     </form>
 </div>
 

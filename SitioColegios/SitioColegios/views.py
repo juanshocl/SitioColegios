@@ -16,7 +16,6 @@ def index(request):
           contexto,
      )
 
-
 def galeria(request):
      return render(
      request,
@@ -50,24 +49,8 @@ def formulario(request):
 def evaluar(request):
      if request.method == 'POST':
           form = RatingsForm(request.POST)
-        #  rtg = Ratings.objects.all()
           if form.is_valid():
-             #  score = form.save(commit=False)
-               # valor = Ratings.objects.get(Schools='2cc99d7c-aae5-4c8e-b201-0c309b1bb9d4').Name
-               # promedio = Ratings.objects.filter(Schools=score.Id).aggregate(Avg('Score'))
-               # suma = Ratings.objects.filter(Id=)
-               # Ratings.objects.filter(Id=).aggregate(Avg('Score'))
-               # Author.objects.values('name').annotate(average_rating=Avg('book__rating'))
-               # for rat in rtg:
-               #      if rat.Schools == form.Schools:
-               #           suma = sum + rat.Score
-               #           cont = cont +1
-               #      pass
-               # prom = suma / cont
-               # School.objects.filter(Id=form.Id).Score = prom
-               # School.save()
                form.save()
-
           return redirect('index')
      else:
           form = RatingsForm()
@@ -93,9 +76,11 @@ def school_view(request):
      context={'form': form},
      )
 
-def school_delete(request, id_school):
-     colegio = School.objects.get(Id=id_school)
+def school_delete(request, id_School):
+     colegio = School.objects.get(Id=id_School)
      if request.method == 'POST':
           colegio.delete()
           return redirect('school_listar')
-     return render(request, 'admin/school_list.html', {'colegio': colegio})
+     return render(request, 
+     'admin/school_delete.html',
+      {'colegio': colegio})
