@@ -24,13 +24,14 @@ from . import views
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls) ),
     path('admin/', admin.site.urls),
-    url(r'^$', views.index, name='index'), #Vista estatica del index
-    url(r'^galeria/$', views.galeria, name='galeria'),
-    url(r'^evaluar/$', views.evaluar, name='crear_evaluacion'),
-    url(r'^listar/$', views.school_listar, name='school_listar'),
+    path('', views.index, name='index'), #Vista estatica del index
+    path('galeria/', views.galeria, name='galeria'),
+    path('evaluar/', views.evaluar, name='crear_evaluacion'),
+    path('listar/', views.school_listar, name='school_listar'),
     #url(r'^editar/(?P<pk>\d+)/$', views.school_listar, name='school_listar'),
-    url(r'^editar/(?P<id_School>\d+)/$', views.school_editar, name='school_editar'),
-    url(r'^nuevo/$', views.school_view, name='school_view'),
-    url(r'^eliminar/(?P<id_School>\d+)/$', views.school_delete, name='school_delete'),
+    # url(r'^editar/(?P<id_School>\d+)/$', views.school_editar, name='school_editar'),
+    path('editar/<id_School>', views.school_editar, name='school_editar'),
+    path('nuevo/', views.school_view, name='school_view'),
+    path('eliminar/<id_School>', views.school_delete, name='school_delete'),
     #path ('catalog/', include('catalog.urls')), #aplicacion de catalogo de colegios.
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,7 +1,4 @@
 {% extends "generic.html" %} {% block content %}
-<br>
-<br>
-
 <div class="container">
     <form method='post' enctype="multipart/form-data">
         {% csrf_token %} {{form.as_p}}

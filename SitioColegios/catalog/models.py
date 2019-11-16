@@ -14,6 +14,7 @@ class SchoolType(models.Model):
 class User(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     Email = models.CharField(max_length=45)
+    Password = models.CharField(max_length=20)
     Phone = models.CharField(max_length=12)
     Name = models.CharField(max_length=15)
     Last_Name = models.CharField(max_length=15)
