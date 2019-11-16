@@ -24,16 +24,12 @@ from SitioColegios.views import SchoolList, SchoolCreate, SchoolUpdate, SchoolDe
 from . import views
 
 urlpatterns = [
-    # url(r'^admin/', include(admin.site.urls) ),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'), #Vista estatica del index
     path('galeria/', views.galeria, name='galeria'),
     path('evaluar/', RatingsCreate.as_view(), name='crear_evaluacion'),
     path('listar/', SchoolList.as_view(), name='school_listar'),
-    #url(r'^editar/(?P<pk>\d+)/$', views.school_listar, name='school_listar'),
-    # url(r'^editar/(?P<id_School>\d+)/$', views.school_editar, name='school_editar'),
     path('editar/<pk>', SchoolUpdate.as_view(), name='school_editar'),
-    path('nuevo/', SchoolCreate.as_view(), name='school_view'),
+    path('nuevo/', SchoolCreate.as_view(), name='school_crear'),
     path('eliminar/<pk>', SchoolDelete.as_view(), name='school_delete'),
-    #path ('catalog/', include('catalog.urls')), #aplicacion de catalogo de colegios.
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

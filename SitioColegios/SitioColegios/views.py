@@ -116,22 +116,27 @@ class RatingsList(ListView):
 
 class RatingsCreate(CreateView):
      model = Ratings
-     model_shool = School
      form_class = RatingsForm
-     # second_form_class = SchoolForm
-     #dato = form_class.Score
-     template_name = 'evaluar/evaluacion_list.html'
-     success_url  = reverse_lazy('index')
+     template_name = 'evaluar/evaluacion.html'
+     success_url = reverse_lazy('index')
 
-     # def get_context_data(self, **kwargs):
-     #      context = super(RatingsCreate, self).get_context_data(**kwargs)
-     #      if 'form' not in context:
-     #           context['form'] = self.form_class(self.request.GET)
-     #      if 'form2' not in context:
-     #           context['form2'] = self.form_class(self.request.GET)
-     #      return context
+     # model = Ratings
+     # model_shool = School
+     # form_class = RatingsForm
+     # # second_form_class = SchoolForm
+     # #dato = form_class.Score
+     # template_name = 'evaluar/evaluacion_list.html'
+     # success_url  = reverse_lazy('index')
+
+     # # def get_context_data(self, **kwargs):
+     # #      context = super(RatingsCreate, self).get_context_data(**kwargs)
+     # #      if 'form' not in context:
+     # #           context['form'] = self.form_class(self.request.GET)
+     # #      if 'form2' not in context:
+     # #           context['form2'] = self.form_class(self.request.GET)
+     # #      return context
      
-     # def post(self, request, **args, **kwargs):
-     #      self.object = self.get_object
-     #      form = self.form_class(request.POST)
-     #      form2 = self.second_form_class(request.POST)
+     # # def post(self, request, **args, **kwargs):
+     # #      self.object = self.get_object
+     # #      form = self.form_class(request.POST)
+     # #      form2 = self.second_form_class(request.POST)

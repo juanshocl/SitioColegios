@@ -29,7 +29,6 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li class="nav-item"><a href="{% url 'galeria' %}" class="nav-link">Galeria</a></li>
-                    <li class="nav-item"><a href="{% url 'crear_evaluacion' %}" class="nav-link">Envia tu evaluacion</a></li>
                     <li class="nav-item"><a href="#" class="nav-link">Contacto</a></li>
                 </ul>
                 <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
@@ -47,12 +46,19 @@
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Registrar</button>
                                     </div>
                                     <div class="form-group text-center">
                                         <small><a href="#" data-toggle="modal" data-target="#modalPassword">Olvidó su password?</a></small>
                                     </div>
                                 </form>
-                                <a href="{% url 'school_listar' %}">Listar Escuelas</a>
+                                <div>
+                                    <a href="{% url 'school_crear' %}">Nueva Escuela</a>
+                                    <br>
+                                    <a href="{% url 'school_listar' %}">Listar Escuelas</a>
+                                    <br>
+                                    <a href="{% url 'crear_evaluacion' %}">Envia tu evaluacion</a>
+                                </div>
                             </li>
                         </ul>
                     </li>
@@ -77,15 +83,7 @@
             </div>
         </div>
     </div>
-
-    <!-- CARRUSEL -->
-    {% load static from staticfiles %}
-    <section id="carrusel">
-        {% block carousel %} {% endblock %}
-    </section>
-    <!-- FIN CARRUSEL  -->
-
-    {% block content %} {% endblock %}
+    {% block carousel %} {% endblock %} {% block content %} {% endblock %}
 
     <!-- FOOTER -->
     <footer>
