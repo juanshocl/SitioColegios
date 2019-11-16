@@ -33,16 +33,16 @@ def school_listar(request):
           contexto,
      )
 
-def school_edit(request, id_School):
+def school_editar(request, id_School):
      School_instance = School.objects.get(Id=id_School)
      if request.method == 'GET':
-          form =  SchoolForm(instance=School_instance)
+          form = SchoolForm(instance=School_instance)
      else:
           form = SchoolForm(request.POST, instance=School_instance)
           if form.is_valid():
-               form.save()
-               return redirect('school_listar')
-     return render(request, 'admin/school_save.html', {'form':form})
+               form.save(request.POST, request.FILES)
+          return redirect('school_listar')
+     return render(request, 'admin/school_form.html', {'form':form})
 
 def formulario(request):
     return HttpResponse("Contacto")
@@ -92,3 +92,10 @@ def school_view(request):
      'admin/school_form.html', 
      context={'form': form},
      )
+
+def school_delete(request, id_school):
+     colegio = School.objects.get(Id=id_school)
+     if request.method == 'POST':
+          colegio.delete()
+          return redirect('school_listar')
+     return render(request, 'admin/school_list.html', {'colegio': colegio})

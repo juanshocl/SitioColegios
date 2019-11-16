@@ -1,8 +1,6 @@
-{% extends "generic.html" %} {% block content %}
-{% load humanize %}
-<!-- CARRUSEL -->
+{% extends "generic.html" %} 
+{% block carousel %}
 {% load static from staticfiles %}
-<section id="carrusel">
     <div class="container">
         <div class="col-12 mt-3">
             <main class="container">
@@ -44,8 +42,9 @@
             </main>
         </div>
     </div>
-</section>
-<!-- FIN CARRUSEL  -->
+{% endblock %}
+
+{% block content %}
 <!-- GALERIA -->
 <div class="row">
     <div class="col-12">
@@ -54,35 +53,36 @@
         </div>
     </div>
     {% block cards %}
+
     <div class="container">
-        <!--Colegio N1-->
+        {% comment %} <!--CARD Colegio -->
         <div class="card-deck">
            {% if  School_instance%}
-                       {% for colegio in School_instance %}    
-            <div class="col-12 col-sm-6 col-lg-4 mb-4">
-                <div class="card">
-                    <img class="card-img-top" id="img{{colegio.Id}}" src="{{ colegio.ImageProfile }}" class="card-img-top img-fluid" alt="">
-                    <div class="card-body">
-                        <h3 class="card-title" id="cardID">{{colegio.Name}}</h3>
-                        <p class="card-subtitle text-muted mb-2">
-                        {% for i in loop_range%}
-                            {% if i <= colegio.Score %}
-                                <i class="icon-star"></i>
-                            {% else %}
-                                <i class="icon-star-empty"></i>    
-                            {% endif %} 
-                        {% endfor %}
-                        </p>
-                        <p class="card-text" id="shortDescription"><br>{{colegio.Review|truncatechars:200 }}
-                        </p>
+            {% for colegio in School_instance %}    
+                     <div class="col-12 col-sm-6 col-lg-4 mb-4">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ colegio.ImageProfile }}" class="card-img-top img-fluid" alt="">
+                            <div class="card-body">
+                                <h3 class="card-title" id="cardID">{{colegio.Name}}</h3>
+                                <p class="card-subtitle text-muted mb-2">
+                                    {% for i in loop_range%}
+                                        {% if i <= colegio.Score %}
+                                            <i class="icon-star"></i>
+                                        {% else %}
+                                            <i class="icon-star-empty"></i>    
+                                        {% endif %} 
+                                    {% endfor %}
+                                </p>
+                                <p class="card-text" id="shortDescription"><br>{{colegio.Review|truncatechars:200 }}
+                                </p>
 
-                        <button type="button" id="btn{{colegio.Id}}" class="btn btn-primary card-link" class="buttonDetalle" data-toggle="modal" data-target="#{{colegio.Id}}">
-                        Detalle
-                    </button>
-                    
+                                <button type="button" class="btn btn-primary card-link" class="buttonDetalle" data-toggle="modal" data-target="#{{colegio.Id}}">
+                                Detalle
+                            </button>
+                            
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
             <!--Fin Colegio -->
             {% endfor %}
             {% else %}
@@ -91,17 +91,17 @@
         </div>
         {% for colegio in School_instance %}  
         <!-- Ventana Emergente colegio 1-->
-        <div class="modal fade" id="{{colegio.Id}}" tabindex="-1">
-            <div class="modal-dialog modal-lg">
+        <div class="modal fade" id="{{colegio.Id}}" tabindex="-1" role="dialog" aria-labelledby="modalColegio" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title" id="modalTitle">{{colegio.Name}}</h4>
-                        <button type="button" class="close" data-dismiss="modal">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span>&times;</span>
                                 </button>
                     </div>
-                    <div class="modal-body" id="modalBody">
-                        <img class="card-img-top card-img-top img-fluid" id="imgeModal" src="{{ colegio.ImageMD}}" alt="">
+                    <div class="modal-body">
+                        <img class="card-img-top card-img-top img-fluid" id="imgeModal" src="{{colegio.ImageMD}}" alt="">
                         <p><br></p>
                         <div>
                             <h4>Calificación</h4>
@@ -148,7 +148,110 @@
             </div>
         </div>
         <!--Fin Ventana Emergente Colegio 1-->
+        {% endfor %} {% endcomment %}
+    <!-- GALERIA -->
+    <div class="container">
+        <div class="card-deck">
+            <!--Colegio N1-->
+            {% if  School_instance%}
+            {% for colegio in School_instance %} 
+                <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="{{ colegio.ImageProfile }}" alt="">
+                        <div class="card-body">
+                            <h3 class="card-title">{{colegio.Name}}</h3>
+                            <p class="card-subtitle text-muted mb-2">
+                                    {% for i in loop_range%}
+                                        {% if i <= colegio.Score %}
+                                            <i class="icon-star"></i>
+                                        {% else %}
+                                            <i class="icon-star-empty"></i>    
+                                        {% endif %} 
+                                    {% endfor %}
+                            </p>
+                            <p class="card-text"><br>{{colegio.Review|truncatechars:200 }}
+                            </p>
+
+                            <button type="button" class="btn btn-primary card-link buttonDetalle" data-toggle="modal" data-target="#Modal{{colegio.Id}}">
+                                Detalle
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {% else %}
+            <h1>No hay colegios registrados, favor crear algunos</h1>
+            {% endif %}
+            <!--Fin Colegio 1-->
+        </div>
+        {% for colegio in School_instance %}  
+        <!-- Ventana Emergente colegio {{colegio.Name}}-->
+        <div class="modal fade" id="Modal{{colegio.Id}}" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{colegio.Name}}</h4>
+                        <button type="button" class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="card-img-top img-fluid" src="{{colegio.ImageMD}}" alt="">
+                        <p><br></p>
+                        <div>
+                            <h4>Calificación</h4>
+                            <p class="card-subtitle text-muted mb-2">
+                                {% for i in loop_range%}
+                                    {% if i <= colegio.Score %}
+                                        <i class="icon-star"></i>
+                                    {% else %}
+                                        <i class="icon-star-empty"></i>    
+                                    {% endif %} 
+                                {% endfor %}
+                            </p>
+                        </div>
+
+                        <div class="container">
+                            <div class="form-group row">
+                                <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
+                                <div class="col-sm-10">
+                                    <input id="contact" type="text" readonly class="form-control-plaintext" value="{{colegio.Address}}">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.State_Province.NameSP}}">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.Phone}}">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.Type.Description}}">
+                                </div>
+                            </div>
+                            <p>
+                              "{{colegio.Review}}"
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Fin Ventana Emergente Colegio {{colegio.Name}}-->
         {% endfor %}
+
+
+
+    </div>
+
+    <!-- FIN GALERIA -->
+
+
         <div class="row ">
             <div class="col-12 ">
                 <div class="py-4 border-bottom ">
@@ -159,6 +262,5 @@
     </div>
     {% endblock %}
 </div>
-
 <!-- FIN GALERIA -->
 {% endblock %}

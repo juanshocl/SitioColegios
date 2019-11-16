@@ -1,83 +1,75 @@
-{% extends "generic.html" %} 
-
-{% block content %}
-
+{% extends "generic.html" %} {% block content %}
+<br>
+<br>
 <table class="table table-bordered">
-	<thead>
-		<tr>
-			<td>Nombre</td>
-			<td>Evaluación</td>
-			<td>Dirección</td>
-			<td>Comuna</td>
-			<td>Telefono</td>
-			<td>Tipo</td>
-			<td>Acciones</td> 
-		</tr>
-	</thead>
-	<tbody>  
-		{% if School_instance%}
-		 {% for colegio in School_instance %}
-		<tr>
-			<td>{{ colegio.Name }}</td>
-			<td>
-				{% for i in loop_range%}
-					{% if i <= colegio.Score %}
-						<i class="icon-star"></i>
-					{% else %}
-						<i class="icon-star-empty"></i>    
-					{% endif %} 
-				{% endfor %}
-			</td>
-			<td>{{ colegio.Address}}</td>
-			<td>{{ colegio.State_Province }}</td>
-			<td>{{ colegio.Phone }}</td>
-			<td>{{ colegio.Type }}</td>
-			<td>
-				<a class="btn btn-primary" data-toggle="modal" data-target="#">Editar</a>
-				{% comment %} <a class="btn btn-danger" href="{% url 'mascota:mascota_eliminar' mascota.id %}">Eliminar</a> {% endcomment %}
-				<a class="btn btn-danger" data-toggle="modal" data-target="#{{colegio.Id}}">Eliminar</a>
-			</td>
-		</tr>
-		{% endfor %}
-		{% else %}
-		<h1>No hay registros de escuelas</h1>
-		{% endif %} 
-	</tbody>
+    <thead>
+        <tr>
+            <td>Nombre</td>
+            <td>Evaluación</td>
+            <td>Dirección</td>
+            <td>Comuna</td>
+            <td>Telefono</td>
+            <td>Tipo</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if School_instance%} 
+        {% for colegio in School_instance %}
+        <tr>
+            <td>{{ colegio.Name }}</td>
+            <td>
+            {{colegio.score}}
+                {% comment %} {% for i in loop_range%} 
+                {% if i<=colegio.Score %} <i class="icon-star"></i>
+                    {% else %}
+                    <i class="icon-star-empty"></i> {% endif %} {% endfor %} {% endcomment %}
+            </td>
+            <td>{{ colegio.Address}}</td>
+            <td>{{ colegio.State_Province }}</td>
+            <td>{{ colegio.Phone }}</td>
+            <td>{{ colegio.Type }}</td>
+            <td>
+            {% comment %} {% url 'school_editar' colegio.Id %} {% endcomment %}
+                <a class="btn btn-primary" data-toggle="modal" href="#">Editar</a> 
+                {% comment %} <a class="btn btn-danger" href="{% url 'mascota:mascota_eliminar' mascota.id %}">Eliminar</a> {% endcomment %}
+                <a class="btn btn-danger" data-toggle="modal" data-target="#{{colegio.Id}}">Eliminar</a>
+
+            </td>
+        </tr>
+        {% endfor %} {% else %}
+        <h1>No hay registros de escuelas</h1>
+        {% endif %}
+    </tbody>
 </table>
-{% for colegio in School_instance %}  
-<div id="{{colegio.Id}}" class="modal fade">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			<div class="modal-header">		
-				<h4 class="modal-title">Ventana Eliminar </h4>	
+{% for colegio in School_instance %}
+<div class="modal fade" id="{{colegio.Id}}" tabindex="-1">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ventana Eliminar </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			</div>
-			<div class="modal-body">
-				<p>¿Esta seguro que desea eliminar {{colegio.Name}}?<br>Este proceso no se puede deshacer..</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-				<button type="button" class="btn btn-danger">Eliminar</button>
-			</div>
-		</div>
-	</div>
+            </div>
+            <div class="modal-body">
+                <p>¿Esta seguro que desea eliminar {{colegio.Name}}?<br>Este proceso no se puede deshacer..</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
 </div>
-{% endfor %}  
-
-
-{% comment %} <ul class="pager">
-	<li>
-		{% if page_obj.has_previous %}
-       	 <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
-		{% endif %}
+{% endfor %} {% comment %}
+<!-- <ul class="pager">
+        <li>
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Previous</a> {% endif %}
         </li>
-	<li>
-		{% if page_obj.has_next %}
-     	 <a href="?page={{ page_obj.next_page_number }}">Next</a> 
-    	{% endif %}
-    </li>
-</ul> 
+        <li>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a> {% endif %}
+        </li>
+    </ul> -->
 
-{% endcomment %}
-
-{% endblock%}
+{% endcomment %} {% endblock%}

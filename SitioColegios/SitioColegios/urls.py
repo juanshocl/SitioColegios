@@ -18,17 +18,19 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
-from SitioColegios.views import index, galeria, evaluar, school_edit, school_listar
+from SitioColegios.views import index, school_delete, school_editar, school_listar, evaluar, galeria, index, school_view
 from . import views
 
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls) ),
     path('admin/', admin.site.urls),
     url(r'^$', views.index, name='index'), #Vista estatica del index
-    url(r'^galeria$', views.galeria, name='galeria'),
-    url(r'^evaluar$', views.evaluar, name='crear_evaluacion'),
-    url(r'^listar$', views.school_listar, name='school_listar'),
-    url(r'^editar/(?P<id_School>\d+)/$', views.school_edit, name='school_editar'),
-    url(r'^nuevo', views.school_view, name='school_view'),
+    url(r'^galeria/$', views.galeria, name='galeria'),
+    url(r'^evaluar/$', views.evaluar, name='crear_evaluacion'),
+    url(r'^listar/$', views.school_listar, name='school_listar'),
+    #url(r'^editar/(?P<pk>\d+)/$', views.school_listar, name='school_listar'),
+    url(r'^editar/(?P<id_School>\d+)/$', views.school_editar, name='school_editar'),
+    url(r'^nuevo/$', views.school_view, name='school_view'),
+    url(r'^eliminar/(?P<id_School>\d+)/$', views.school_delete, name='school_delete'),
     #path ('catalog/', include('catalog.urls')), #aplicacion de catalogo de colegios.
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
