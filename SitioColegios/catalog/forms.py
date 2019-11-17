@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-from catalog.models import School, Ratings
+from catalog.models import School, Ratings, ContactModel
 
 class SchoolForm(forms.ModelForm):
 
@@ -71,7 +71,7 @@ class RegistroForm(UserCreationForm):
             'username',
             'first_name',
             'last_name',
-            'email'
+            'email',
         ]
         labels = {
             'username': 'Nombre Usuario',
@@ -79,3 +79,41 @@ class RegistroForm(UserCreationForm):
             'last_name': 'Apellidos',
             'email': 'Email',
         }
+
+class ContactForm(forms.ModelForm):
+    
+    class Meta:
+        model = ContactModel
+
+        fields = [
+            'Nombre',
+            'Email',
+            'Rut', 
+            'Region'
+            'Comuna',
+            'Metodo',
+            'Msg',
+            'Newsletter',
+        ]
+        labels = {
+            'Nombre': 'Nombre',
+            'Email': 'Email',
+            'Rut': 'Rut', 
+            'Region':'Region',
+            'Comuna': 'Comuna',
+            'Metodo': 'Contacto',
+            'Msg': 'Mensaje',
+            'Newsletter': 'Newsletter',
+        }
+        widgets = {
+            'Nombre': forms.TextInput(attrs={'class':'form-control'}),
+            'Email': forms.TextInput(attrs={'class':'form-control'}),
+            'Rut': forms.TextInput(attrs={'class':'form-control'}), 
+            'Region': forms.Select(attrs={'class':'form-control'}),
+            'Comuna': forms.Select(attrs={'class':'form-control'}),
+            'Metodo': forms.Select(attrs={'class':'form-control'}),
+            'Msg': forms.Textarea(attrs={'class':'form-control'}),
+            'Newsletter': forms.BooleanField(attrs={'class':'form-control'}),
+
+        }
+

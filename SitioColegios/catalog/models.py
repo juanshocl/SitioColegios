@@ -81,8 +81,9 @@ class Ratings(models.Model):
         #', '.join([ User.Email for User in self.User.all()[:3] ])
     get_email.short_description = 'Email'
 
-class ContactoModel(models.Model):
+class ContactModel(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    Nombre = models.CharField(max_length=30, default=None)
     Email = models.EmailField(unique=True, default = None)
     Rut = models.CharField(max_length=14, default=None) 
     Region = models.CharField(max_length=50, default=None)
