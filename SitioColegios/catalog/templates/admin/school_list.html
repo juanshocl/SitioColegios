@@ -40,19 +40,15 @@
         {% endif %}
     </tbody>
 </table>
+            <div class="pagination ">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary ">Anterior</a>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Siguiente</a>
+                    {% endif %}
+                </span>
+            </div>
 </div>
-
-
-{% comment %}
-<!-- <ul class="pager">
-        <li>
-            {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">Previous</a> {% endif %}
-        </li>
-        <li>
-            {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next</a> {% endif %}
-        </li>
-    </ul> -->
-
-{% endcomment %} {% endblock%}
+ {% endblock%}

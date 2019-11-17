@@ -18,14 +18,15 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
-from SitioColegios.views import SchoolList, SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate, contact, Galeria
+from django.contrib.auth.views import login
+from SitioColegios.views import SchoolList, SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate, contact, Galeria, IndexList, RegisterUsuario
 #from SitioColegios.views import index, school_delete, school_editar, school_listar, evaluar, galeria, index, school_view, SchoolList, \
  #   SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate
 from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'), #Vista estatica del index
+    path('', IndexList.as_view(), name='index'), #Vista estatica del index
     path('galeria/', Galeria.as_view(), name='galeria'),
     path('contacto/', views.contact, name='contact'),
     path('evaluar/', RatingsCreate.as_view(), name='crear_evaluacion'),
@@ -33,4 +34,7 @@ urlpatterns = [
     path('editar/<pk>', SchoolUpdate.as_view(), name='school_editar'),
     path('nuevo/', SchoolCreate.as_view(), name='school_crear'),
     path('eliminar/<pk>', SchoolDelete.as_view(), name='school_delete'),
+    path('register/',RegisterUsuario.as_view(), name='registrar'),
+    path('login/', login,{'template_name': 'index.html'}, name='login'),
+    path('logout/', views.logout, name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 from catalog.models import School, Ratings
 
@@ -60,4 +62,20 @@ class RatingsForm(forms.ModelForm):
             'Score': forms.Select(attrs={'class':'form-control'}),
             'Schools': forms.Select(attrs={'class':'form-control'}),
         }
-        
+
+class RegistroForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields =[
+            'username',
+            'first_name',
+            'last_name',
+            'email'
+        ]
+        labels = {
+            'username': 'Nombre Usuario',
+            'first_name': 'Nombre',
+            'last_name': 'Apellidos',
+            'email': 'Email',
+        }

@@ -10,65 +10,6 @@
     <div class="col-lg-4 col-md-12 mb-4">
 
       <!--Modal: Name-->
-      {% comment %} <div class="modal fade" id="modal{{colegio.Id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-          <!--Content-->
-          <div class="modal-content">
-            <!--Body-->
-            <div class="modal-body mb-0 p-0">
-                <img class="card-img-top img-fluid" src="{{colegio.ImageProfile}}" alt="">
-                        <p><br></p>
-                        <div>
-                            <h4>Calificación</h4>
-                            <p class="card-subtitle text-muted mb-2">
-                                {% for i in loop_range%}
-                                    {% if i <= colegio.Score %}
-                                        <i class="icon-star"></i>
-                                    {% else %}
-                                        <i class="icon-star-empty"></i>    
-                                    {% endif %} 
-                                {% endfor %}
-                            </p>
-                        </div>
-
-                        <div class="container">
-                            <div class="form-group row">
-                                <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
-                                <div class="col-sm-10">
-                                    <input id="contact" type="text" readonly class="form-control-plaintext" value="{{colegio.Address}}">
-                                </div>
-                                <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
-                                <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.State_Province.NameSP}}">
-                                </div>
-                                <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
-                                <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.Phone}}">
-                                </div>
-                                <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
-                                <div class="col-sm-10">
-                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.Type.Description}}">
-                                </div>
-                            </div>
-                            <p>
-                              "{{colegio.Review}}"
-                            </p>
-
-                        </div>
-            </div>
-            <!--Footer-->
-            <div class="modal-footer justify-content-center">
-              <span class="mr-4">Spread the word!</span>
-              <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
-
-            </div>
-
-          </div>
-          <!--/.Content-->
-
-        </div>
-      </div> {% endcomment %}
-
           <div class="modal fade" id="modal{{colegio.Id}}" tabindex="-1">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -135,20 +76,17 @@
   {% else %}
     <h1>No hay colegios registrados, favor crear algunos</h1>
   {% endif %}
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-
+    <div class="pagination ">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary ">Anterior</a>
+            {% endif %}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="btn btn-primary">Siguiente</a>
+            {% endif %}
+        </span>
+    </div>
 </div>
-<!-- Grid row -->
 
-<!-- Grid row -->
 
-<!-- Grid row -->
 {% endblock %}

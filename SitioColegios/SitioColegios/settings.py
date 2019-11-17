@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 from unipath import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).ancestor(2)
@@ -126,3 +127,5 @@ STATICFILES_DIRS = [
     BASE_DIR.child('static'),
     'static'
 ]
+
+LOGIN_REDIRECT_URL = reverse_lazy('index')

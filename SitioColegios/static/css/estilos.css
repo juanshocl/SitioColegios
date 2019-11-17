@@ -107,5 +107,11 @@ button:focus {
     text-align: center;
 }
 
-
-/* Ventana modal eliminar */
+.pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    padding-bottom: 25px;
+}

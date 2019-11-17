@@ -2,21 +2,31 @@ from django.http import  HttpResponse
 from django.template import Template, Context
 from django.shortcuts import render, redirect
 from django.db.models import Avg
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout as do_logout
+
+#Revisar los duplicados.
+from django.contrib.auth import authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login as do_login
+
+#Importamos los modelos de la Base de datos.
 
 from catalog.models import SchoolType, User, state_province, School, Ratings
-from catalog.forms import SchoolForm, RatingsForm
+from catalog.forms import SchoolForm, RatingsForm, RegistroForm
 
-def index(request):
-     School_instance = School.objects.all().order_by('Name')
-     loop_range = range (1,6)
-     contexto = {'School_instance':School_instance, 'loop_range': loop_range}
-     return render(
-          request,
-          'home/index.html',
-          contexto,
-     )
+# def index(request):
+#      School_instance = School.objects.all().order_by('Name')
+#      loop_range = range (1,6)
+#      contexto = {'School_instance':School_instance, 'loop_range': loop_range}
+#      return render(
+#           request,
+#           'home/index.html',
+#           contexto,
+#      )
 
 
 # def school_listar(request):
@@ -78,9 +88,21 @@ def index(request):
 #      'admin/school_delete.html',
 #       {'colegio': colegio})
 
+
+class IndexList(ListView):
+     model = School
+     queryset = School.objects.all().order_by('Name')
+     template_name = 'home/index.html'
+     paginate_by = 4
+
+
 class SchoolList(ListView):
      model = School
+     list_filter = ('Name', 'Score', 'State_Province', 'Type')
+     queryset = School.objects.all().order_by('Name')
      template_name = 'admin/school_list.html'
+     paginate_by = 4
+
 
 class SchoolCreate(CreateView):
      model = School
@@ -110,17 +132,9 @@ class RatingsCreate(CreateView):
      success_url = reverse_lazy('index')
 
 class Galeria(ListView):
-     loop_range = range (1,6)
      model = School
      template_name = 'galeria/galeria.html'
-
-
-# def galeria(request):
-#      return render(
-#      request,
-#      'galeria/galeria.html',
-#      context={},
-# )
+     paginate_by = 6
 
      # model = Ratings
      # model_shool = School
@@ -151,3 +165,71 @@ def contact(request):
      'contact/contacto.html',
      context={},
 )
+
+class RegisterUsuario(CreateView):
+     model = User
+     template_name = 'users/register.html'
+     form_class = RegistroForm
+     success_url = reverse_lazy('index')
+
+# Creacion de vistas para Usuarios.
+
+def welcome(request):
+    # Si estamos identificados devolvemos la portada
+    if request.user.is_authenticated:
+        return render(request, 'index')
+    # En otro caso redireccionamos al login
+    return redirect('login')
+
+def register(request):
+    # Creamos el formulario de autenticación vacío
+    form = UserCreationForm()
+    if request.method == "POST":
+        # Añadimos los datos recibidos al formulario
+        form = UserCreationForm(data=request.POST)
+        # Si el formulario es válido...
+        if form.is_valid():
+
+            # Creamos la nueva cuenta de usuario
+            user = form.save()
+
+            # Si el usuario se crea correctamente 
+            if user is not None:
+                # Hacemos el login manualmente
+                do_login(request, user)
+                # Y le redireccionamos a la portada
+                return redirect('/')
+
+    # Si llegamos al final renderizamos el formulario
+    return render(request, "users/register.html", {'form': form})
+
+def login(request):
+    # Creamos el formulario de autenticación vacío
+    form = AuthenticationForm()
+    if request.method == "POST":
+        # Añadimos los datos recibidos al formulario
+        form = AuthenticationForm(data=request.POST)
+        # Si el formulario es válido...
+        if form.is_valid():
+            # Recuperamos las credenciales validadas
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+
+            # Verificamos las credenciales del usuario
+            user = authenticate(username=username, password=password)
+
+            # Si existe un usuario con ese nombre y contraseña
+            if user is not None:
+                # Hacemos el login manualmente
+                do_login(request, user)
+                # Y le redireccionamos a la portada
+                return redirect('/')
+
+    # Si llegamos al final renderizamos el formulario
+    return render(request, "users/login.html", {'form': form})
+
+def logout(request):
+
+    do_logout(request)
+    # Redireccionamos a la portada
+    return redirect('/')
