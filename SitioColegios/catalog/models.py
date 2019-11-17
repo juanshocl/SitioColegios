@@ -80,3 +80,14 @@ class Ratings(models.Model):
         return self.User.Email
         #', '.join([ User.Email for User in self.User.all()[:3] ])
     get_email.short_description = 'Email'
+
+class ContactoModel(models.Model):
+    Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    Email = models.EmailField(unique=True, default = None)
+    Rut = models.CharField(max_length=14, default=None) 
+    Region = models.CharField(max_length=50, default=None)
+    Comuna = models.CharField(max_length=50, default=None)
+    Metodo = models.CharField(max_length=16, default=None)
+    Msg = models.TextField(max_length=1000, default=None)
+    Newsletter = models.BooleanField(default=False) 
+

@@ -7,8 +7,9 @@ body {
     background: #333;
 }
 
-cw {
-    margin-top: 56;
+.custom-card,
+.custom-card:hover {
+    color: rgb(255, 255, 255);
 }
 
 header {

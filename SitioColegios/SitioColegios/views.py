@@ -4,8 +4,6 @@ from django.shortcuts import render, redirect
 from django.db.models import Avg
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.db.models import F
-
 
 from catalog.models import SchoolType, User, state_province, School, Ratings
 from catalog.forms import SchoolForm, RatingsForm
@@ -20,12 +18,7 @@ def index(request):
           contexto,
      )
 
-def galeria(request):
-     return render(
-     request,
-     'galeria/galeria.html',
-     context={},
-)
+
 # def school_listar(request):
 #      School_instance = School.objects.all().order_by('Name')
 #      loop_range = range (1,6)
@@ -46,10 +39,6 @@ def galeria(request):
 #                form.save(request.POST, request.FILES)
 #           return redirect('school_listar')
 #      return render(request, 'admin/school_form.html', {'form':form})
-
-def formulario(request):
-    return HttpResponse("Contacto")
-
 # def evaluar(request):
 #      if request.method == 'POST':
 #           form = RatingsForm(request.POST)
@@ -120,6 +109,19 @@ class RatingsCreate(CreateView):
      template_name = 'evaluar/evaluacion.html'
      success_url = reverse_lazy('index')
 
+class Galeria(ListView):
+     loop_range = range (1,6)
+     model = School
+     template_name = 'galeria/galeria.html'
+
+
+# def galeria(request):
+#      return render(
+#      request,
+#      'galeria/galeria.html',
+#      context={},
+# )
+
      # model = Ratings
      # model_shool = School
      # form_class = RatingsForm
@@ -140,3 +142,12 @@ class RatingsCreate(CreateView):
      # #      self.object = self.get_object
      # #      form = self.form_class(request.POST)
      # #      form2 = self.second_form_class(request.POST)
+
+# class Contact()
+
+def contact(request):
+     return render(
+     request,
+     'contact/contacto.html',
+     context={},
+)

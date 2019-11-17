@@ -18,7 +18,7 @@ from django.urls import include, path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
-from SitioColegios.views import SchoolList, SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate
+from SitioColegios.views import SchoolList, SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate, contact, Galeria
 #from SitioColegios.views import index, school_delete, school_editar, school_listar, evaluar, galeria, index, school_view, SchoolList, \
  #   SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate
 from . import views
@@ -26,7 +26,8 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'), #Vista estatica del index
-    path('galeria/', views.galeria, name='galeria'),
+    path('galeria/', Galeria.as_view(), name='galeria'),
+    path('contacto/', views.contact, name='contact'),
     path('evaluar/', RatingsCreate.as_view(), name='crear_evaluacion'),
     path('listar/', SchoolList.as_view(), name='school_listar'),
     path('editar/<pk>', SchoolUpdate.as_view(), name='school_editar'),

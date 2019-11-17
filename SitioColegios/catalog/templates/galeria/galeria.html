@@ -1,338 +1,154 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends "generic.html" %} 
+{% block content %}
+<br>
+<!-- Grid row -->
+<div class="row">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> COLEGIOSPARATODOS </title>
-     {% load static from staticfiles %}
-    <link rel="stylesheet" href="{% static "css/estilos.css" %}">
-    <link rel="script" href="{% static "js/script.js" %}">
+  <!-- Grid column -->
+  {% if  object_list%}
+  {% for colegio in object_list %} 
+    <div class="col-lg-4 col-md-12 mb-4">
 
-    <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static "css/fontello.css" %}">
+      <!--Modal: Name-->
+      {% comment %} <div class="modal fade" id="modal{{colegio.Id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <!--Content-->
+          <div class="modal-content">
+            <!--Body-->
+            <div class="modal-body mb-0 p-0">
+                <img class="card-img-top img-fluid" src="{{colegio.ImageProfile}}" alt="">
+                        <p><br></p>
+                        <div>
+                            <h4>Calificación</h4>
+                            <p class="card-subtitle text-muted mb-2">
+                                {% for i in loop_range%}
+                                    {% if i <= colegio.Score %}
+                                        <i class="icon-star"></i>
+                                    {% else %}
+                                        <i class="icon-star-empty"></i>    
+                                    {% endif %} 
+                                {% endfor %}
+                            </p>
+                        </div>
 
-</head>
+                        <div class="container">
+                            <div class="form-group row">
+                                <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
+                                <div class="col-sm-10">
+                                    <input id="contact" type="text" readonly class="form-control-plaintext" value="{{colegio.Address}}">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.State_Province.NameSP}}">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.Phone}}">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.Type.Description}}">
+                                </div>
+                            </div>
+                            <p>
+                              "{{colegio.Review}}"
+                            </p>
 
-<body class="color">
-    <header>
-        <!-- NAVBAR -->
-        <div class="contenedor">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container">
-                    <a href="{% url 'index' %}"  class="navbar-brand icon-graduation-cap">ColegiosParaTodos <span class="sr-only">(Actual)</span></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Menu de Navegacion">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbar">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a href="galeria.html" class="nav-link">Galeria</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="contacto.html" class="nav-link">Contacto</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+                        </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+              <span class="mr-4">Spread the word!</span>
+              <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+
+            </div>
+
+          </div>
+          <!--/.Content-->
+
         </div>
-    </header>
+      </div> {% endcomment %}
 
-
-    <div class="gal-section">
-        <ul class="gal-grid">
-            <li>
-                <div class="gal-box gal-img-1 ">
-                    <a href="#" data-toggle="modal" data-target="#ventana1">
-                        <h3>San Francisco de Sales</h3>
-                        <p>Nuestra misión es ofrecer una formación integral de calidad</p>
-                    </a>
-                </div>
-            </li>
-
-            <li>
-                <div class="gal-box gal-img-2">
-                    <a href="#" data-toggle="modal" data-target="#ventana2">
-                        <h3>Colegio Alcázar de Maipú</h3>
-                        <p>Entrando en el contexto de ambiente empresarial de una empresa</p>
-                    </a>
-                </div>
-            </li>
-
-            <li>
-                <div class="gal-box gal-img-3">
-                    <a href="#" data-toggle="modal" data-target="#ventana3">
-                        <h3>La Araucaria de Maipú</h3>
-                        <p>Una gran historia de amor y desamor, una joven que deja su lugar</p>
-                    </a>
-                </div>
-            </li>
-            
-            <li>
-                <div class="gal-box gal-img-4">
-                    <a href="#" data-toggle="modal" data-target="#ventana4">
-                        <h3>Los Alpes</h3>
-                        <p>El mago lo hizo otra vez</p>
-                    </a>
-                </div>
-            </li>
-
-
-            <!-- Ventana Emergente colegio 1-->
-            <div class="modal fade" id="ventana1" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="modalTitle">San Francisco de Sales</h4>
-                            <button type="button" class="close" data-dismiss="modal">
-                                <span>&times;</span>
-                    </button>
-                        </div>
-                        <div class="modal-body" id="modalBody">
-                            <img class="card-img-top card-img-top img-fluid" id="imgeModal" src="{% static "imagenes/colegio1-vm.png" %}" class="" alt="">
-                            <p><br></p>
-                            <div>
-                                <h4>Calificación</h4>
-                                <p class="card-subtitle text-muted mb-2">
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star-half-alt"></i>
-                                    <i class="icon-star-empty"></i>
-                                </p>
-                            </div>
-
-                            <div class="container">
-                                <div class="form-group row">
-                                    <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticDireccion" value="San Manuel 121, Maipú, Región Metropolitana">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="Maipú">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="+56 2 2537 0291">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticTipo" value="Particular Subvencionado">
-                                    </div>
-                                </div>
-                                <p id="paragraphBody">
-                                    “En el año 2007 la Congregación San Francisco de Sales y la Corporación Educacional Nuestra Señora del Carmen, aprueban el proyecto Colegio San Francisco de Sales. Estas instituciones se unen bajo la propuesta de formar un colegio bajo la tutela de la
-                                    espiritualidad de los padres de San Francisco de Sales y la experiencia en el campo de la educación de la Corporación Educacional Nuestra Señora del Carmen. Al año siguiente partimos nuestro proyecto, llegando hasta
-                                    el nivel de primero medio con una matrícula completa, teniendo un curso por nivel.”
-                                </p>
-
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Fin Ventana Emergente Colegio 1-->
-            <!-- Ventana Emergente colegio 2-->
-            <div class="modal fade" id="ventana2" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="modalTitle">Colegio Alcázar de Maipú</h4>
-                            <button type="button" class="close" data-dismiss="modal">
-                                            <span>&times;</span>
-                                </button>
-                        </div>
-                        <div class="modal-body" id="modalBody">
-                            <img class="card-img-top" id="imgeModal" src="{% static "imagenes/colegio2-vm.png" %}" class="card-img-top img-fluid" alt="">
-                            <p><br></p>
-                            <div>
-                                <h4>Calificación</h4>
-                                <p class="card-subtitle text-muted mb-2">
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star-empty"></i>
-                                </p>
-                            </div>
-
-                            <div class="container">
-                                <div class="form-group row">
-                                    <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticDireccion" value="Av. Parque Central Poniente #500 ">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="Maipú">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="+562 2585 2304 – +562 2585 2307">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticTipo" value="Municipal">
-                                    </div>
-                                </div>
-                                <p id="paragraphBody">
-                                    El Colegio Alcázar de Maipú fue fundado en el año 1988. La construcción del establecimiento, fue iniciativa de la Corporación en conjunto con la empresa privada para responder a la demanda educativa generada por la implementación del proyecto habitacional
-                                    denominado “Ciudad Satélite”. Tiene una matrícula de Tiene una matrícula de 1.426 estudiantes, distribuidos en Educación Pre-básica y Educación Básica. Se destaca por ser un colegio abierto a la comunidad de la Ciudad
-                                    Satélite, entregando espacios para la participación de diversas instituciones como juntas de vecinos, conjuntos folclóricos, scouts, kárate entre otros.
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Fin Ventana Emergente Colegio 2-->
-            <!-- Ventana Emergente colegio 3-->
-            <div class="modal fade" id="ventana3" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="modalTitle">La Araucaria de Maipú</h4>
-                            <button type="button" class="close" data-dismiss="modal">
+          <div class="modal fade" id="modal{{colegio.Id}}" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{colegio.Name}}</h4>
+                        <button type="button" class="close" data-dismiss="modal">
                                     <span>&times;</span>
                         </button>
+                    </div>
+                    <div class="modal-body">
+                        <img class="card-img-top img-fluid" src="/{{colegio.ImageMD}}" alt="">
+                        <p><br></p>
+                        <div>
+                            <h4>Calificación</h4>
+                            <p class="card-subtitle text-muted mb-2">
+                                {% for i in '12345'%}
+                                    {% if i <= colegio.Score %}
+                                        <i class="icon-star"></i>
+                                    {% else %}
+                                        <i class="icon-star-empty"></i>    
+                                    {% endif %} 
+                                {% endfor %}
+                            </p>
                         </div>
-                        <div class="modal-body" id="modalBody">
-                            <img class="card-img-top" id="imgeModal" src="{% static "imagenes/colegio3-vm.png" %}" class="card-img-top img-fluid" alt="">
-                            <p><br></p>
-                            <div>
-                                <h4>Calificación</h4>
-                                <p class="card-subtitle text-muted mb-2">
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                </p>
-                            </div>
 
-                            <div class="container">
-                                <div class="form-group row">
-                                    <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticDireccion" value="Calle Nueva San Martin 2285, Maipú, Región Metropolitana">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="Maipú">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="+56 2 2771 9561">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticTipo" value="Particular Subvencionado">
-                                    </div>
+                        <div class="container">
+                            <div class="form-group row">
+                                <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
+                                <div class="col-sm-10">
+                                    <input id="contact" type="text" readonly class="form-control-plaintext" value="{{colegio.Address}}">
                                 </div>
-                                <p id="paragraphBody">
-                                    Mision, Fomar a niños y niñas mediante un proceso de educacion personalizado, dirigido a alcanzar aprendizajes significativos respetando la diversidad y ritmos de aprendizajes de los estudiantes.
-                                </p>
-
+                                <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.State_Province.NameSP}}">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.Phone}}">
+                                </div>
+                                <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
+                                <div class="col-sm-10">
+                                    <input type="text" readonly class="form-control-plaintext" value="{{colegio.Type.Description}}">
+                                </div>
                             </div>
+                            <p>
+                              "{{colegio.Review}}"
+                            </p>
+
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
-            <!--Fin Ventana Emergente Colegio 3-->
-            <!-- Ventana Emergente colegio 4-->
-            <div class="modal fade" id="ventana4" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="modalTitle">Los Alpes</h4>
-                            <button type="button" class="close" data-dismiss="modal">
-                                    <span>&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body" id="modalBody">
-                            <img class="card-img-top" id="imgeModal" src="{% static "imagenes/colegio1-vm.png" %}" class="card-img-top img-fluid" alt="">
-                            <p><br></p>
-                            <div>
-                                <h4>Calificación</h4>
-                                <p class="card-subtitle text-muted mb-2">
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
-                                    <i class="icon-star"></i>
+        </div>
+      <!--Modal: Name-->
 
-                                </p>
-                            </div>
+      <a><img class="img-fluid z-depth-1" src="/{{ colegio.ImageMD }}" alt="video"
+          data-toggle="modal" data-target="#modal{{colegio.Id}}"></a>
 
-                            <div class="container">
-                                <div class="form-group row">
-                                    <label for="contact" class="col-sm-2 col-form-label">Direccion</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticDireccion" value="Parque Central Ote 1751, Maipú, Región Metropolitana">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Comuna</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="Maipú">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Telefono</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticComuna" value="+56 2 2584 6836">
-                                    </div>
-                                    <label for="contact" class="col-sm-2 col-form-label">Tipo Establecimiento</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" readonly class="form-control-plaintext" id="staticTipo" value="Particular">
-                                    </div>
-                                </div>
-                                <p id="paragraphBody">
-                                    El Proyecto Educativo Institucional (PEI) del Colegio Los Alpes se constituye como una herramienta indispensable para orientar los esfuerzos en forma concertada, para producir así mejores resultados educativos. Hoy estamos en la época de la colaboración:
-                                    necesitamos unir esfuerzos en torno a metas colectivas, superar el individualismo y alinearnos en función de una visión compartida.
-                                </p>
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Fin Ventana Emergente Colegio 4-->
-        </ul>
     </div>
-    <!-- FOOTER -->
-    <footer>
-        <section id="final">
-            <div class="contenedor">
-                <p class="copy"> ColegiosParaTodos &copy; 2019 </p>
-                <div class="contact">
-                    <a tabindex="7" class="icon-phone-outline" href="tel:+56998307778"></a>
-                    <a tabindex="8" class="icon-mail" href="mailto:info@Colegiosparatodos.cl"></a>
-                </div>
-            </div>
-        </section>
-    </footer>
-    <!-- FIN FOOTER -->
+  {% endfor %}
+  {% else %}
+    <h1>No hay colegios registrados, favor crear algunos</h1>
+  {% endif %}
+  <!-- Grid column -->
 
+  <!-- Grid column -->
 
-    <!-- Seccion Script  -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
+  <!-- Grid column -->
 
-</html>
+  <!-- Grid column -->
+
+  <!-- Grid column -->
+
+</div>
+<!-- Grid row -->
+
+<!-- Grid row -->
+
+<!-- Grid row -->
+{% endblock %}

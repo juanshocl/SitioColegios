@@ -1,5 +1,6 @@
 {% extends "generic.html" %} {% block content %}
 <br>
+<div class="container">
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -13,17 +14,16 @@
         </tr>
     </thead>
     <tbody>
-        {% if object_list%} 
-        {% for colegio in object_list %}
+        {% if object_list%} {% for colegio in object_list %}
         <tr>
             <td>{{ colegio.Name }}</td>
             <td>
-                {% for i in loop_range%} 
-                    {% if i <= colegio.Score %} 
-                        <i class="icon-star"></i>
+                {% for i in loop_range %} 
+                {% if i <= colegio.Score %} 
+                    <i class="icon-star"></i>
                     {% else %}
                         <i class="icon-star-empty"></i> 
-                    {% endif %} 
+                    {% endif %}
                 {% endfor %}
             </td>
             <td>{{ colegio.Address}}</td>
@@ -32,7 +32,7 @@
             <td>{{ colegio.Type }}</td>
             <td>
                 <a class="btn btn-primary" href="{% url 'school_editar' colegio.Id %}">Editar</a>
-				<a class="btn btn-danger" href="{% url 'school_delete' colegio.Id  %}">Eliminar</a>
+                <a class="btn btn-danger" href="{% url 'school_delete' colegio.Id  %}">Eliminar</a>
             </td>
         </tr>
         {% endfor %} {% else %}
@@ -40,6 +40,7 @@
         {% endif %}
     </tbody>
 </table>
+</div>
 
 
 {% comment %}

@@ -1,39 +1,40 @@
 {% extends "generic.html" %} {% block content %}
 <br>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <td>Usuario</td>
-            <td>Evaluación</td>
-            <td>Escuela</td>
-        </tr>
-    </thead>
-    <tbody>
-        {% if object_list%} 
-        {% for evaluacion in object_list %}
-        <tr>
-            <td>{{ evaluacion.User }}</td>
-            <td>
-                {% for i in loop_range%} 
-                    {% if i <= evaluacion.Score %} 
-                        <i class="icon-star"></i>
-                    {% else %}
-                        <i class="icon-star-empty"></i> 
-                    {% endif %} 
-                {% endfor %}
-            </td>
-            <td>{{ evaluacion.Schools}}</td>
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <td>Usuario</td>
+                <td>Evaluación</td>
+                <td>Escuela</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% if object_list%} {% for evaluacion in object_list %}
+            <tr>
+                <td>{{ evaluacion.User }}</td>
+                <td>
+                    {% for i in loop_range%} 
+                        {% if i <= evaluacion.Score %} 
+                            <i class="icon-star"></i>
+                        {% else %}
+                            <i class="icon-star-empty"></i> 
+                        {% endif %} 
+                    {% endfor %}
+                </td>
+                <td>{{ evaluacion.Schools}}</td>
 
-            <td>
-                <a class="btn btn-primary" href="{% url 'school_editar' evaluacion.Id %}">Editar</a>
-				<a class="btn btn-danger" href="{% url 'school_delete' evaluacion.Id  %}">Eliminar</a>
-            </td>
-        </tr>
-        {% endfor %} {% else %}
-        <h1>No hay registros de evaluaciones</h1>
-        {% endif %}
-    </tbody>
-</table>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'school_editar' evaluacion.Id %}">Editar</a>
+                    <a class="btn btn-danger" href="{% url 'school_delete' evaluacion.Id  %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %} {% else %}
+            <h1>No hay registros de evaluaciones</h1>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
 
 
 {% comment %}

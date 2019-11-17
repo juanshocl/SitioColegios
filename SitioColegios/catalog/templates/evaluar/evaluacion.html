@@ -3,7 +3,7 @@
 <div class="containner">
     <form method='post'>
         {% csrf_token %} {{form.as_p}}
-        <button type="submit">Guardar</button>
+        <button type="submit" onClick="alert('Almacenado correctamente');">Guardar</button>
     </form>
 </div>
 
