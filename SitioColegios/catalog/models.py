@@ -12,16 +12,6 @@ class SchoolType(models.Model):
     def __str__(self):
         return str(self.Description)
 
-# class Users(models.Model):
-#     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-#     Email = models.CharField(max_length=45)
-#     Phone = models.CharField(max_length=12)
-#     Name = models.CharField(max_length=15)
-#     Last_Name = models.CharField(max_length=15)
-    
-#     def __str__(self):
-#         return str(self.Email)
-
 class state_province(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     NameSP = models.CharField(max_length=25)
@@ -91,3 +81,6 @@ class ContactModel(models.Model):
     Metodo = models.CharField(max_length=16, default=None)
     Msg = models.TextField(max_length=1000, default=None)
     Newsletter = models.BooleanField(default=False)
+
+    def __srt__(self):
+        return self.Nombre

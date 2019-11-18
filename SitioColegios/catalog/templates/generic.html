@@ -47,9 +47,9 @@
                                         {% if user.is_superuser%}
                                             <a href="{% url 'school_crear' %}">Crear Escuela</a>
                                             <br>
-                                            <a href="">Crear Comuna</a>
+                                            <a href="{% url 'comuna' %}">Crear Comuna</a>
                                             <br>
-                                            <a href="">Crear Tipo Escuelas</a>
+                                            <a href="{% url 'establecimiento' %}">Crear Tipo Escuelas</a>
                                             <br>
                                             <div class="dropdown-divider"></div>
                                             <a href="{% url 'school_listar' %}">Listar Escuelas</a>

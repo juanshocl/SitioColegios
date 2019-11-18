@@ -1,0 +1,69 @@
+{% extends "generic.html" %} {% block content %}
+
+     <!-- FORMULARIO -->
+
+    <div class="form-container">
+        <form class="text-center border border-light p-5" action="#!">
+
+            <p class="h4 mb-4">Contáctanos</p>
+
+            <!-- Nombre -->
+            <input type="text" id="defaultContactFormName" class="form-control mb-4" placeholder="Nombre">
+
+            <!-- Email -->
+            <input type="email" id="defaultContactFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+            <!-- RUT -->
+            <input class="browser-default custom-select mb-4" id="txtRut" type="text"
+            onkeyup="modifyText()" placeholder="Ingrese Rut" required />
+
+            <!-- Region -->
+            <select class="browser-default custom-select mb-4" id="txtRegion" oninput="selectCity()">
+            <option value="" disabled selected>Elige tu Region</option>
+            </select>
+
+
+            <!-- Comuna -->
+            <select class="browser-default custom-select mb-4" id="txtCity">
+            <option value="" disabled selected>Elige tu comuna</option>
+            </select>
+
+            <!-- Tema -->
+            <label>Donde escuchaste de nosotros?</label>
+            <select class="browser-default custom-select mb-4">
+            <option value="" disabled selected>Elige una opcion</option>
+            <option value="1" > Grupo de amigos</option>
+            <option value="2"> En el trabajo</option>
+            <option value="3"> Publicidad </option>
+            </select>
+
+            <!-- Mensaje -->
+            <div class="form-group">
+                <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Mensaje"></textarea>
+            </div>
+
+            <!-- Avisos -->
+            <div class="custom-control custom-checkbox mb-4">
+                <input type="checkbox" class="custom-control-input" id="defaultContactFormNotice">
+                <label class="custom-control-label" for="defaultContactFormNotice">Quiero recibir avisos de colegios</label>
+            </div>
+
+            <!-- Boton enviar -->
+            <button class="btn btn-info btn-block" type="submit">Enviar</button>
+
+        </form>
+        <!-- FIN FORMULARIO -->
+    </div>
+
+    {% load static from staticfiles %}
+    <script src="{% static 'js/comuna.js' %}"></script>
+
+    {% comment %} <br>
+<div class="container">
+    <form method='post' enctype="multipart/form-data">
+        {% csrf_token %} {{form.as_p}}
+        <button type="submit" onClick="alert('Almacenado correctamente');">Guardar</button>
+    </form>
+</div> {% endcomment %}
+
+{% endblock %}

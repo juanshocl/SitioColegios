@@ -16,79 +16,9 @@ from django.views.generic.edit import FormView
 
 #Importamos los modelos de la Base de datos.
 
-from catalog.models import SchoolType, state_province, School, Ratings
-from catalog.forms import SchoolForm, RatingsForm, RegistroForm, FormLogin, ContactForm
-
-# def index(request):
-#      School_instance = School.objects.all().order_by('Name')
-#      loop_range = range (1,6)
-#      contexto = {'School_instance':School_instance, 'loop_range': loop_range}
-#      return render(
-#           request,
-#           'home/index.html',
-#           contexto,
-#      )
-
-
-# def school_listar(request):
-#      School_instance = School.objects.all().order_by('Name')
-#      loop_range = range (1,6)
-#      contexto = {'School_instance':School_instance, 'loop_range': loop_range}
-#      return render(
-#           request,
-#           'admin/school_list.html',
-#           contexto,
-#      )
-
-# def school_editar(request, id_School):
-#      School_instance = School.objects.get(Id=id_School)
-#      if request.method == 'GET':
-#           form = SchoolForm(instance=School_instance)
-#      else:
-#           form = SchoolForm(request.POST, instance=School_instance)
-#           if form.is_valid():
-#                form.save(request.POST, request.FILES)
-#           return redirect('school_listar')
-#      return render(request, 'admin/school_form.html', {'form':form})
-# def evaluar(request):
-#      if request.method == 'POST':
-#           form = RatingsForm(request.POST)
-#           if form.is_valid():
-#                form.save()
-#           return redirect('index')
-#      else:
-#           form = RatingsForm()
-
-#      return render(
-#      request,
-#      'evaluar/evaluacion.html',
-#      context={'form': form},
-# )
-# def school_view(request):
-#      if request.method == 'POST':
-#           form = SchoolForm(request.POST, request.FILES)
-#           if form.is_valid():
-#                form.save()
-
-#           return redirect('listar')
-#      else:
-#           form = SchoolForm()
-
-#      return render(
-#      request,
-#      'admin/school_form.html', 
-#      context={'form': form},
-#      )
-
-# def school_delete(request, id_School):
-#      colegio = School.objects.get(Id=id_School)
-#      if request.method == 'POST':
-#           colegio.delete()
-#           return redirect('school_listar')
-#      return render(request, 
-#      'admin/school_delete.html',
-#       {'colegio': colegio})
-
+from catalog.models import SchoolType, state_province, School, Ratings, state_province, SchoolType, ContactModel
+from catalog.forms import SchoolForm, RatingsForm, RegistroForm, FormLogin, ContactForm,\
+      ComunaForm, TypeForm
 
 class IndexList(ListView):
      model = School
@@ -99,14 +29,12 @@ class IndexList(ListView):
 
 class SchoolList(ListView):
      model = School
-     list_filter = ('Name', 'Score', 'State_Province', 'Type')
      queryset = School.objects.all().order_by('Name')
      template_name = 'admin/school_list.html'
      paginate_by = 4
 
 
-class SchoolCreate( CreateView):
-
+class SchoolCreate(CreateView):
      model = School
      form_class = SchoolForm
      template_name = 'admin/school_form.html'
@@ -139,6 +67,32 @@ class Galeria(ListView):
      template_name = 'galeria/galeria.html'
      paginate_by = 6
 
+class StateCreate(CreateView):
+     model = state_province
+     form_class = ComunaForm
+     template_name = 'admin/state_province.html'
+     success_url  = reverse_lazy('school_listar')
+
+class TypeCreate(CreateView):
+     model = SchoolType
+     form_class = TypeForm
+     template_name = 'admin/school_type.html'
+     success_url  = reverse_lazy('school_listar')
+
+class ContactCreate(CreateView):
+     model = ContactModel
+     form_class = ContactForm
+     template_name = 'contact/contacto.html'
+     success_url  = reverse_lazy('index')
+
+def contact(request):
+         return render(
+     request,
+     'contact/contacto_old.html',
+     context={},
+)
+
+
      # model = Ratings
      # model_shool = School
      # form_class = RatingsForm
@@ -161,13 +115,6 @@ class Galeria(ListView):
      # #      form2 = self.second_form_class(request.POST)
 
 # class Contact()
-
-def contact(request):
-     return render(
-     request,
-     'contact/contacto.html',
-     context={},
-)
 
 class RegisterUsuario(CreateView):
      model = User
@@ -194,12 +141,11 @@ class Login(FormView):
      
 class LogoutUser(RedirectView):
      pattern_name = 'logout'
+     #success_url = reverse_lazy('index')
 
      def get(self, request, *args, **kwargs):
         logout(request)
         return super(LogoutUser, self).get(request, *args, **kwargs)
-
-
 
 # def logout(request):
 
@@ -255,4 +201,3 @@ class LogoutUser(RedirectView):
 
 #     # Si llegamos al final renderizamos el formulario
 #     return render(request, "users/login.html", {'form': form})
-

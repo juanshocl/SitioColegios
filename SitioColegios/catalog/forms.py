@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
-from catalog.models import School, Ratings, ContactModel
+from catalog.models import School, Ratings, ContactModel, state_province, SchoolType
 
 class SchoolForm(forms.ModelForm):
 
@@ -88,22 +88,12 @@ class RegistroForm(UserCreationForm):
             'password2': 'Repita Password',
 
         }
-        # widgets = {
-        #     'username': forms.TextInput(attrs={'class':'form-control'}),
-        #     'first_name': forms.TextInput(attrs={'class':'form-control'}),
-        #     'last_name': forms.TextInput(attrs={'class':'form-control'}),
-        #     'is_staff': forms.Select(attrs={'class':'form-control'}),
-        #     'email': forms.TextInput(attrs={'class':'form-control'}),
-        #     'password1': forms.TextInput(attrs={'class':'form-control'}),
-        #     'password2': forms.TextInput(attrs={'class':'form-control'}),
-        # }
 
 
 class ContactForm(forms.ModelForm):
     
     class Meta:
         model = ContactModel
-
         fields = [
             'Nombre',
             'Email',
@@ -124,17 +114,6 @@ class ContactForm(forms.ModelForm):
             'Msg': 'Mensaje',
             'Newsletter': 'Newsletter',
         }
-        widgets = {
-            'Nombre': forms.TextInput(attrs={'class':'form-control'}),
-            'Email': forms.TextInput(attrs={'class':'form-control'}),
-            'Rut': forms.TextInput(attrs={'class':'form-control'}), 
-            'Region': forms.Select(attrs={'class':'form-control'}),
-            'Comuna': forms.Select(attrs={'class':'form-control'}),
-            'Metodo': forms.Select(attrs={'class':'form-control'}),
-            'Msg': forms.Textarea(attrs={'class':'form-control'}),
-            'Newsletter': forms.BooleanField(required=False,initial=False,label='News Letter'),
-
-        }
 
 class FormLogin(AuthenticationForm):
     def __init__(self, *args, **kwargs):
@@ -143,3 +122,27 @@ class FormLogin(AuthenticationForm):
         self.fields['username'].widget.attrs['placeholder']='Nombre Usuario'
         self.fields['password'].widget.attrs['class']='form-control'
         self.fields['password'].widget.attrs['placeholder']='Contraseña'
+
+class ComunaForm(forms.ModelForm):
+    
+    class Meta:
+        model = state_province
+
+        fields =[
+            'NameSP',
+        ]
+
+        labels = {
+            'NameSP': 'Comuna',
+        }
+
+class TypeForm(forms.ModelForm):
+    
+    class Meta:
+        model = SchoolType
+        fields =[
+            'Description',
+        ]
+        labels = {
+            'Description': 'Tipo Establecimiento',
+        }

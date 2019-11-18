@@ -130,3 +130,11 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL = reverse_lazy('/')
 LOGOUT_REDIRECT_URL = reverse_lazy('/')
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'djangowebymobile2019@gmail.com'
+EMAIL_HOST_PASSWORD = 'django123456789'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

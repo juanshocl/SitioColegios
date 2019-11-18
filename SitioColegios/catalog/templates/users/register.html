@@ -41,9 +41,7 @@
 		<div class="col-md-8 col-md-offset-2">
 			<div class="form-group">
 				<label >Usuario normal</label>
-				<input type="checkbox" name="is_staff" checked class="">
-				{% comment %} <input type="checkbox" name="is_staff" checked disabled> {% endcomment %}
-				{% comment %} <input class="form-control" type="text" name=""> {% endcomment %}
+				<input type="checkbox" name="is_staff" checked >
 			</div>
 		</div>
 	</div>
@@ -76,15 +74,6 @@
 
 </div>
 {% endblock %} 
-
-
-{% comment %} <h2>Registrar usuario</h2>
-
-<form method="POST">
-    {% csrf_token %}
-     {{ form.as_p }}
-    <button type="submit" onClick="alert('Almacenado correctamente');" >Registrar</button>
-</form>  {% endcomment %}
 
 
 
