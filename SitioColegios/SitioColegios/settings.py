@@ -128,4 +128,5 @@ STATICFILES_DIRS = [
     'static'
 ]
 
-LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGIN_REDIRECT_URL = reverse_lazy('/')
+LOGOUT_REDIRECT_URL = reverse_lazy('/')

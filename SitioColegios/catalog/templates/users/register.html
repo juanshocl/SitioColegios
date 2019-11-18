@@ -5,7 +5,14 @@
 <div class="container">
 <form method="post">
 	{% csrf_token %}
-	
+		<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label >Nombre de usuario</label>
+				<input class="form-control" type="text" name="username">
+			</div>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="form-group">
@@ -17,16 +24,8 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="form-group">
-				<label >Apellidos</label>
+				<label >Apellido</label>
 				<input class="form-control" type="text" name="last_name">
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="form-group">
-				<label >Nombre de usuario</label>
-				<input class="form-control" type="text" name="username">
 			</div>
 		</div>
 	</div>
@@ -35,6 +34,16 @@
 			<div class="form-group">
 				<label >Correo</label>
 				<input class="form-control" type="text" name="email">
+			</div>
+		</div>
+	</div>
+	<div class="row d-none">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="form-group">
+				<label >Usuario normal</label>
+				<input type="checkbox" name="is_staff" checked class="">
+				{% comment %} <input type="checkbox" name="is_staff" checked disabled> {% endcomment %}
+				{% comment %} <input class="form-control" type="text" name=""> {% endcomment %}
 			</div>
 		</div>
 	</div>
@@ -58,7 +67,7 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 			<div class="form-group">
-				<button class="btn btn-primary "type="submit">Guardar</button>
+				<button class="btn btn-primary "type="submit" onClick="alert('Almacenado correctamente');">Guardar</button>
 			</div>
 		</div>
 	</div>
@@ -66,7 +75,8 @@
 </form>
 
 </div>
-{% endblock %}
+{% endblock %} 
+
 
 {% comment %} <h2>Registrar usuario</h2>
 
@@ -74,6 +84,7 @@
     {% csrf_token %}
      {{ form.as_p }}
     <button type="submit" onClick="alert('Almacenado correctamente');" >Registrar</button>
-</form>
+</form>  {% endcomment %}
 
-<hr/> {% endcomment %}
+
+

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from catalog.models import School, Ratings, ContactModel
 
@@ -72,13 +72,32 @@ class RegistroForm(UserCreationForm):
             'first_name',
             'last_name',
             'email',
+            #'is_superuser',
+            'is_staff',
+            'password1',
+            'password2',
         ]
         labels = {
             'username': 'Nombre Usuario',
             'first_name': 'Nombre',
             'last_name': 'Apellidos',
+            #'is_superuser': 'Usuario Administrador',
+            'is_staff': 'Usuario normal',
             'email': 'Email',
+            'password1': 'Password',
+            'password2': 'Repita Password',
+
         }
+        # widgets = {
+        #     'username': forms.TextInput(attrs={'class':'form-control'}),
+        #     'first_name': forms.TextInput(attrs={'class':'form-control'}),
+        #     'last_name': forms.TextInput(attrs={'class':'form-control'}),
+        #     'is_staff': forms.Select(attrs={'class':'form-control'}),
+        #     'email': forms.TextInput(attrs={'class':'form-control'}),
+        #     'password1': forms.TextInput(attrs={'class':'form-control'}),
+        #     'password2': forms.TextInput(attrs={'class':'form-control'}),
+        # }
+
 
 class ContactForm(forms.ModelForm):
     
@@ -117,3 +136,10 @@ class ContactForm(forms.ModelForm):
 
         }
 
+class FormLogin(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(FormLogin, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['class']='form-control'
+        self.fields['username'].widget.attrs['placeholder']='Nombre Usuario'
+        self.fields['password'].widget.attrs['class']='form-control'
+        self.fields['password'].widget.attrs['placeholder']='Contraseña'
