@@ -1,12 +1,9 @@
 {% extends "generic.html" %} {% block content %}
 <br>
-<div class="containner">
+<div class="container">
     <form method='post'>
         {% csrf_token %} {{form.as_p}}
         <button type="submit" onClick="alert('Almacenado correctamente');">Guardar</button>
     </form>
 </div>
-
-
-
 {% endblock %}

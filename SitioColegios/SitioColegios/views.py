@@ -5,17 +5,15 @@ from django.db.models import Avg
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import logout as do_logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import logout as do_logout, authenticate, login as do_login
 
 #Revisar los duplicados.
-from django.contrib.auth import authenticate
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login as do_login
+
 
 #Importamos los modelos de la Base de datos.
 
-from catalog.models import SchoolType, User, state_province, School, Ratings
+from catalog.models import SchoolType, state_province, School, Ratings
 from catalog.forms import SchoolForm, RatingsForm, RegistroForm
 
 # def index(request):

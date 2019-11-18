@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.contrib.auth.models import User
 from django.db.models import Avg
 
 # Create your models here.
@@ -11,16 +12,15 @@ class SchoolType(models.Model):
     def __str__(self):
         return str(self.Description)
 
-class User(models.Model):
-    Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    Email = models.CharField(max_length=45)
-    #Password = models.CharField(max_length=20)
-    Phone = models.CharField(max_length=12)
-    Name = models.CharField(max_length=15)
-    Last_Name = models.CharField(max_length=15)
+# class Users(models.Model):
+#     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+#     Email = models.CharField(max_length=45)
+#     Phone = models.CharField(max_length=12)
+#     Name = models.CharField(max_length=15)
+#     Last_Name = models.CharField(max_length=15)
     
-    def __str__(self):
-        return str(self.Email)
+#     def __str__(self):
+#         return str(self.Email)
 
 class state_province(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -90,5 +90,4 @@ class ContactModel(models.Model):
     Comuna = models.CharField(max_length=50, default=None)
     Metodo = models.CharField(max_length=16, default=None)
     Msg = models.TextField(max_length=1000, default=None)
-    Newsletter = models.BooleanField(default=False) 
-
+    Newsletter = models.BooleanField(default=False)

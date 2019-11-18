@@ -89,7 +89,7 @@ class ContactForm(forms.ModelForm):
             'Nombre',
             'Email',
             'Rut', 
-            'Region'
+            'Region',
             'Comuna',
             'Metodo',
             'Msg',
@@ -113,7 +113,7 @@ class ContactForm(forms.ModelForm):
             'Comuna': forms.Select(attrs={'class':'form-control'}),
             'Metodo': forms.Select(attrs={'class':'form-control'}),
             'Msg': forms.Textarea(attrs={'class':'form-control'}),
-            'Newsletter': forms.BooleanField(attrs={'class':'form-control'}),
+            'Newsletter': forms.BooleanField(required=False,initial=False,label='News Letter'),
 
         }
 

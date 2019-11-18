@@ -1,7 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 
 # Register your models here.
-from . models import SchoolType, User, state_province, School, Ratings
+from . models import SchoolType, state_province, School, Ratings
 
 class SchoolAdmin(admin.ModelAdmin):
     list_display = ('Id', 'Name', 'Score', 'Address', 'get_State', 'Phone', 'get_typeName')
@@ -38,15 +39,15 @@ class StateProviceAdmin(admin.ModelAdmin):
 
 admin.site.register(state_province, StateProviceAdmin)
 
-class UserAdmin(admin.ModelAdmin):
-    list_display = ('get_name','Email', 'Phone')
+# class UserAdmin(admin.ModelAdmin):
+#     list_display = ('get_name','Email', 'Phone')
 
-    def get_name(self, obj):
-        return(obj.Name+' '+obj.Last_Name)
+#     def get_name(self, obj):
+#         return(obj.Name+' '+obj.Last_Name)
 
-    get_name.short_description = 'Nombre'
+#     get_name.short_description = 'Nombre'
 
-admin.site.register(User, UserAdmin)
+# admin.site.register(User, UserAdmin)
 
 class RatingAdmin(admin.ModelAdmin):
     # list_display = ('get_email','get_user','Score', 'display_School') 

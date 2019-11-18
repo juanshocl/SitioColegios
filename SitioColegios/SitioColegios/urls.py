@@ -28,7 +28,7 @@ urlpatterns = [
     path('admin/', admin.site.urls), #OK
     path('', IndexList.as_view(), name='index'), #Vista estatica del index Vista Operativa
     path('galeria/', Galeria.as_view(), name='galeria'), #Funcionando
-    path('contacto/', views.contact, name='contact'),
+    path('contacto/', views.contact, name='contact'), #Template listo, Falta vincular el form con la Base de datos.
     path('evaluar/', RatingsCreate.as_view(), name='crear_evaluacion'),
     path('listar/', SchoolList.as_view(), name='school_listar'),
     path('editar/<pk>', SchoolUpdate.as_view(), name='school_editar'),
