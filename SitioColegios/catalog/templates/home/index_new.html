@@ -57,43 +57,47 @@
         </div>
     </div>
     {% block cards %}
- <div class="container">
-        <div class="card-deck">
-        {% if  object_list%}
-            <!--{{ colegio.name}}-->
-            {% for colegio in object_list %} 
-            <div class="col-12 col-sm-6 col-lg-3 mb-4">
-                <div class="card">
-                    <img class="card-img-top img-fluid" src="{{ colegio.ImageProfile }}" alt="{{colegio.Name}}">
-                    <div class="card-body">
-                        <h3 class="card-title">{{colegio.Name}}</h3>
-                        <p class="card-subtitle text-muted mb-2">
-                            {% for i in '12345'%}
-                                {% if i <= colegio.Score %}
-                                    <i class="icon-star"></i>
-                                {% else %}
-                                    <i class="icon-star-empty"></i>    
-                                {% endif %} 
-                            {% endfor %}
-                        </p>
-                        <p class="card-text"><br>{{colegio.Review|truncatechars:200 }}
-                        </p>
 
-                        <button type="button" class="btn btn-primary card-link buttonDetalle" data-toggle="modal" data-target="#Modal{{colegio.Id}}">
-                            Detalle
-                        </button>
+    <div class="container">
+
+        <!-- GALERIA -->
+        <div class="container">
+            <div class="card-deck">
+                <!--Colegio N1-->
+                {% if  object_list%}
+                {% for colegio in object_list %} 
+                    <div class="col-12 col-sm-6 col-lg-3 mb-4">
+                        <div class="card">
+                            <img class="card-img-top img-fluid" src="{{ colegio.ImageProfile }}" alt="">
+                            <div class="card-body">
+                                <h3 class="card-title">{{colegio.Name}}</h3>
+                                <p class="card-subtitle text-muted mb-2">
+                                        {% for i in '12345'%}
+                                            {% if i <= colegio.Score %}
+                                                <i class="icon-star"></i>
+                                            {% else %}
+                                                <i class="icon-star-empty"></i>    
+                                            {% endif %} 
+                                        {% endfor %}
+                                </p>
+                                <p class="card-text"><br>{{colegio.Review|truncatechars:200 }}
+                                </p>
+
+                                <button type="button" class="btn btn-primary card-link buttonDetalle" data-toggle="modal" data-target="#Modal{{colegio.Id}}">
+                                    Detalle
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                {% endfor %}
+                {% else %}
+                <h1>No hay colegios registrados, favor crear algunos</h1>
+                {% endif %}
+                <!--Fin {{ colegio.name}}-->
             </div>
-            <!--Fin {{ colegio.name}}-->
-            {% endfor %}
-        {% else %}
-            <h1>No hay colegios registrados, favor crear algunos</h1>
-        {% endif %}    
-        </div>
-        {% if  object_list%}
-        {% for colegio in object_list %} 
-        <!-- Ventana Emergente {{ colegio.name}}-->
+        
+            {% for colegio in School_instance %}  
+            <!-- Ventana Emergente colegio {{colegio.Name}}-->
             <div class="modal fade" id="Modal{{colegio.Id}}" tabindex="-1">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -150,12 +154,10 @@
                     </div>
                 </div>
             </div>
-        <!--Fin Ventana Emergente {{ colegio.name}}-->
-        {% endfor %}
-        {% else %}
-        <h1>No hay colegios registrados, favor crear algunos</h1>
-        {% endif %}
-                    <div class="pagination ">
+            <!--Fin Ventana Emergente Colegio {{colegio.Name}}-->
+            {% endfor %}
+        </div>
+            <div class="pagination ">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
                         <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary ">Anterior</a>
@@ -165,9 +167,13 @@
                     {% endif %}
                 </span>
             </div>
+            
+
+        <!-- FIN GALERIA -->
+
+
     </div>
-
-
     {% endblock %}
-  </div>  
+</div>
+<!-- FIN GALERIA -->
 {% endblock %}
