@@ -42,7 +42,7 @@ urlpatterns = [
     path('register/',RegisterUsuario.as_view(), name='registrar'), #Listo
     path('comuna/',login_required(StateCreate.as_view()) , name='comuna'), #Listo
     path('establecimiento/',login_required(TypeCreate.as_view()), name='establecimiento'), #Listo
-    path('login/',Login.as_view(), name='Login'), #Listo
+    path('accounts/login/',Login.as_view(), name='Login'), #Listo
     path('logout/', login_required(LogoutUser.as_view()), name='logout'), #esta redirigiendo a otra ubicacion.
 
     path('passreset/password_reset', PasswordResetView.as_view(template_name='passreset/password_reset_form.html', email_template_name="passreset/password_reset_email.html"), name = 'password_reset'), #Listo
