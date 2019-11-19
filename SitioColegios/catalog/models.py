@@ -23,8 +23,8 @@ class School(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     Name = models.CharField(max_length=40)
     Score = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True) #models.FloatField(null=True, blank=True, default=None)
-    ImageMD = models.ImageField(upload_to='static/img//modal')
-    ImageProfile = models.ImageField(upload_to='static/img/profile')
+    ImageMD = models.ImageField(upload_to='static/img//modal', max_length=100)
+    ImageProfile = models.ImageField(upload_to='static/img/profile', max_length=100)
     Address = models.CharField(max_length=60)
     State_Province = models.ForeignKey(state_province, on_delete=models.CASCADE) # relacion muchos a uno
     Phone = models.CharField(max_length=12)

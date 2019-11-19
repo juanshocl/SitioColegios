@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> COLEGIOSPARATODOS </title>
+    
+    <link rel="stylesheet" href="/static/css/estilos.css"> 
+
+    <!-- bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/fontello.css">
+
+    <!-- Scripts -->
+
+</head>
+
+<body class="color">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" role="navigation">
+        <div class="container">
+            <a href="/" class="navbar-brand icon-graduation-cap">ColegiosParaTodos <span class="sr-only">(Actual)</span></a>
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbar">
+                    
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a href="/galeria/" class="nav-link">Galeria</a></li>
+                    <li class="nav-item"><a href="/contacto/" class="nav-link">Contacto</a></li>
+                </ul>
+                <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+                    <li class="nav-item order-2 order-md-1"><a href="#" class="nav-link" title="settings"><i class="fa fa-cog fa-fw fa-lg"></i></a></li>
+                    <li class="dropdown order-1">
+                        <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">
+                        
+                            Usuario  Administrador DUOC
+                        
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right mt-2">
+                            <li class="px-3 py-2">
+                                
+                                    <div>
+                                        
+                                            <a href="/nuevo/">Crear Escuela</a>
+                                            <br>
+                                            <a href="/comuna/">Crear Comuna</a>
+                                            <br>
+                                            <a href="/establecimiento/">Crear Tipo Escuelas</a>
+                                            <br>
+                                            <div class="dropdown-divider"></div>
+                                            <a href="/listar/">Listar Escuelas</a>
+                                            <br>
+                                        
+                                        
+                                    </div>
+                                
+
+                                <form class="form" action="/accounts/login/" method='post'enctype="multipart/form-data">
+                                
+                                 <input type="hidden" name="csrfmiddlewaretoken" value="CcvwrFlLiz7wGgDhKVM99BJ4ZRgyEOBA4CdNS2z68blka2s0yE5tQSsUFenWJlvs">
+                                    
+                                    <div class="form-group">
+                                        
+                                            <a href="/logout/" class="btn btn-primary btn-block">Logout</a>
+                                        
+                                    </div>
+                                    <div class="form-group text-center">
+                                        
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="modalPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Contraseña olvidada</h3>
+                    <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <p>Cambiar su contraseña</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                    <button class="btn btn-primary">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    <br>
+<div class="container">
+    <form method='post' enctype="multipart/form-data">
+        <input type="hidden" name="csrfmiddlewaretoken" value="CcvwrFlLiz7wGgDhKVM99BJ4ZRgyEOBA4CdNS2z68blka2s0yE5tQSsUFenWJlvs"> <p><label for="id_Name">Nombre:</label> <input type="text" name="Name" value="Colegio 1" class="form-control" maxlength="40" required id="id_Name"></p>
+<p><label for="id_ImageMD">Imagen Grande:</label> <input type="file" name="ImageMD" class="form-control" accept="image/*" required id="id_ImageMD"></p>
+<p><label for="id_ImageProfile">Imagen Perfil:</label> <input type="file" name="ImageProfile" class="form-control" accept="image/*" required id="id_ImageProfile"></p>
+<p><label for="id_Address">Dirección:</label> <input type="text" name="Address" value="Pasaje 1" class="form-control" maxlength="60" required id="id_Address"></p>
+<p><label for="id_State_Province">Comuna:</label> <select name="State_Province" class="form-control" required id="id_State_Province">
+  <option value="">---------</option>
+
+  <option value="926f4de7-976d-4c4b-b6c2-433aa47b6dec" selected>Maipú</option>
+
+  <option value="e92906c3-8672-4556-984f-b4c92051add6">Providencia</option>
+
+  <option value="0d122713-3a1b-4bf8-b7bd-37bcd9b62237">Machali</option>
+
+</select></p>
+<p><label for="id_Phone">Telefono:</label> <input type="text" name="Phone" value="237641287" class="form-control" maxlength="12" required id="id_Phone"></p>
+<p><label for="id_Type">Tipo establecimiento:</label> <select name="Type" class="form-control" required id="id_Type">
+  <option value="">---------</option>
+
+  <option value="efdfbef7-9f03-47a2-881f-aa8e66a462fe" selected>Particular</option>
+
+  <option value="6cd41693-b336-482c-9c00-01afc54b96c5">Privado</option>
+
+  <option value="7e881159-ec7a-451d-9d9a-2bb1b50648f2">Subencionado</option>
+
+  <option value="cf5f7cc2-d1de-4293-a7c6-2615bfd128ed">Pagado</option>
+
+</select></p>
+<p><label for="id_Review">Reseña:</label> <textarea name="Review" cols="40" rows="10" class="form-control" maxlength="2000" required id="id_Review">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer commodo metus porta mauris maximus viverra. Suspendisse rutrum porta pharetra. Donec tristique convallis lectus vel ornare. Nulla lacinia ultrices velit, in feugiat sapien ullamcorper sollicitudin. Suspendisse convallis est elit, vitae aliquam urna vestibulum sit amet. In ut commodo erat, eget fermentum orci. Praesent purus urna, porttitor sed pretium egestas, condimentum in elit. Vivamus tempus leo et consequat placerat. Donec eu bibendum augue.
+
+Fusce vulputate turpis mi, tincidunt finibus lacus vulputate eu. Donec quis neque convallis, fringilla urna id, semper lacus. Cras vitae vehicula urna. Sed felis lacus, dictum ac lectus sed, ullamcorper ultricies lectus. Nam in tempor neque, ut vulputate enim. Phasellus sit amet commodo lacus. Quisque sed rutrum diam. Vivamus sollicitudin, dolor nec dapibus molestie, nisi orci iaculis ipsum, id dapibus urna est eu dolor. Donec purus dolor, elementum gravida est quis, fringilla gravida dolor. Sed congue accumsan mauris aliquam dapibus. Aenean lacinia vestibulum lorem id imperdiet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam mattis, felis eget interdum vulputate, odio nibh euismod magna, id rhoncus velit tellus sit amet felis.</textarea></p>
+        <button type="submit" onClick="alert('Almacenado correctamente');">Guardar</button>
+    </form>
+</div>
+
+
+
+    <!-- FOOTER -->
+    <footer>
+        <section id="final">
+            <div class="contenedor">
+                <p class="copy"> ColegiosParaTodos &copy; 2019 </p>
+                <div class="contact">
+                    <a tabindex="7" class="icon-phone-outline" href="tel:+56998307778"></a>
+                    <a tabindex="8" class="icon-mail" href="mailto:info@Colegiosparatodos.cl"></a>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <!-- FIN FOOTER -->
+
+    <!-- Seccion Script  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
+</body>
+
+</html>

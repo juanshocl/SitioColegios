@@ -58,8 +58,8 @@ class RatingsList(ListView):
 
 class RatingsCreate(CreateView):
      model = Ratings
-     form_class = RatingsForm
      template_name = 'evaluar/evaluacion.html'
+     form_class = RatingsForm
      success_url = reverse_lazy('index')
 
 class Galeria(ListView):
