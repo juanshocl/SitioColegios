@@ -141,7 +141,7 @@ class Login(FormView):
      
 class LogoutUser(RedirectView):
      pattern_name = 'logout'
-     #success_url = reverse_lazy('index')
+     success_url = reverse_lazy('Login')
 
      def get(self, request, *args, **kwargs):
         logout(request)

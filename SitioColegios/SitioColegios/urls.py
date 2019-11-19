@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import url
@@ -45,9 +45,9 @@ urlpatterns = [
     path('login/',Login.as_view(), name='Login'), #Listo
     path('logout/', login_required(LogoutUser.as_view()), name='logout'), #esta redirigiendo a otra ubicacion.
 
-    path('passreset/password_reset', PasswordResetView.as_view(template_name='passreset/password_reset_form.html', email_template_name="passreset/password_reset_email.html"), name = 'password_reset'),
+    path('passreset/password_reset', PasswordResetView.as_view(template_name='passreset/password_reset_form.html', email_template_name="passreset/password_reset_email.html"), name = 'password_reset'), #Listo
     path('passreset/password_reset_done', PasswordResetDoneView.as_view(template_name='passreset/password_reset_done.html'), name = 'password_reset_done'),
-    re_path(r'^reset/(?P<uidb64>[0-9A-za-z_\-]+)/(?P<token>.+)/$', PasswordResetConfirmView.as_view(template_name='passreset/password_reset_confirms.html'), name = 'password_reset_confirm'),
-    path('reset/done',PasswordResetCompleteView.as_view(template_name='passreset/password_reset_complete.html') , name = 'password_reset_complete'),
+    re_path(r'^passreset/(?P<uidb64>[0-9A-za-z_\-]+)/(?P<token>.+)/$', PasswordResetConfirmView.as_view(template_name='passreset/password_reset_confirm.html'), name = 'password_reset_confirm'),
+    path('passreset/done',PasswordResetCompleteView.as_view(template_name='passreset/password_reset_complete.html') , name = 'password_reset_complete'),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
