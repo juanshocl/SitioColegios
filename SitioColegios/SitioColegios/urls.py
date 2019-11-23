@@ -21,13 +21,16 @@ from django.conf.urls import url
 from django.contrib.auth.views import LoginView, logout_then_login, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.contrib.auth.decorators import login_required
 from SitioColegios.views import SchoolList, SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate, Galeria, IndexList, RegisterUsuario,\
-    Login, LogoutUser, StateCreate, TypeCreate, ContactCreate, contact
+    Login, LogoutUser, StateCreate, TypeCreate, ContactCreate, contact, ShoolViewSet
 #from SitioColegios.views import index, school_delete, school_editar, school_listar, evaluar, galeria, index, school_view, SchoolList, \
  #   SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate
 from . import views
 from django.contrib.auth import views as auth_views
 from catalog.filters import SchooFilter
+from rest_framework import routers
 
+# router = routers.DefaultRouter()
+# router.register(r'shools', views.ShoolViewSet)
 
 
 urlpatterns = [
@@ -50,5 +53,6 @@ urlpatterns = [
     path('passreset/password_reset_done', PasswordResetDoneView.as_view(template_name='passreset/password_reset_done.html'), name = 'password_reset_done'),
     re_path(r'^passreset/(?P<uidb64>[0-9A-za-z_\-]+)/(?P<token>.+)/$', PasswordResetConfirmView.as_view(template_name='passreset/password_reset_confirm.html'), name = 'password_reset_confirm'),
     path('passreset/done',PasswordResetCompleteView.as_view(template_name='passreset/password_reset_complete.html') , name = 'password_reset_complete'),
+    path('api/', ShoolViewSet.as_view(), name='api')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

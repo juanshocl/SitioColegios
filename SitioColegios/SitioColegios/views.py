@@ -1,3 +1,4 @@
+import json
 from django.http import  HttpResponse, HttpResponseRedirect
 from django.template import Template, Context
 from django.shortcuts import render, redirect
@@ -13,6 +14,8 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormView
 
+from rest_framework.views import APIView
+from catalog.serializers import ShoolSerializer
 #Importamos los modelos de la Base de datos.
 
 from catalog.models import SchoolType, state_province, School, Ratings, state_province, SchoolType, ContactModel
@@ -152,3 +155,16 @@ def search(request):
     shools_list = School.objects.all()
     shools_filter = SchooFilter(request.GET, queryset=shools_list)
     return render(request, 'admin/school_list.html', {'filter': shools_filter})
+
+
+class ShoolViewSet(APIView):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+#     queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = ShoolSerializer
+
+    def get(self, request, format=None):
+         listar  = School.objects.all()
+         response = self.serializer(listar, many=True)
+         return HttpResponse(json.dumps(response.data), content_type='applicacion/json')

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'django.contrib.humanize',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,9 @@ EMAIL_PORT = 25
 EMAIL_HOST_USER = 'djangowebymobile2019@gmail.com'
 EMAIL_HOST_PASSWORD = 'django123456789'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 4
+}
