@@ -13,12 +13,12 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormView
 
-
 #Importamos los modelos de la Base de datos.
 
 from catalog.models import SchoolType, state_province, School, Ratings, state_province, SchoolType, ContactModel
 from catalog.forms import SchoolForm, RatingsForm, RegistroForm, FormLogin, ContactForm,\
       ComunaForm, TypeForm
+from catalog.filters import SchooFilter
 
 class IndexList(ListView):
      model = School
@@ -55,6 +55,7 @@ class SchoolDelete(DeleteView):
 class RatingsList(ListView):
      model = Ratings
      template_name = 'evaluar/evaluacion.html'
+     
 
 class RatingsCreate(CreateView):
      model = Ratings
@@ -141,63 +142,13 @@ class Login(FormView):
      
 class LogoutUser(RedirectView):
      pattern_name = 'logout'
-     success_url = reverse_lazy('Login')
+     success_url = reverse_lazy('index')
 
      def get(self, request, *args, **kwargs):
         logout(request)
         return super(LogoutUser, self).get(request, *args, **kwargs)
 
-# def logout(request):
-
-#     do_logout(request)
-#     # Redireccionamos a la portada
-#     return redirect('/')
-
-# Creacion de vistas para Usuarios.
-
-# def register(request):
-#     # Creamos el formulario de autenticación vacío
-#     form = UserCreationForm()
-#     if request.method == "POST":
-#         # Añadimos los datos recibidos al formulario
-#         form = UserCreationForm(data=request.POST)
-#         # Si el formulario es válido...
-#         if form.is_valid():
-
-#             # Creamos la nueva cuenta de usuario
-#             user = form.save()
-
-#             # Si el usuario se crea correctamente 
-#             if user is not None:
-#                 # Hacemos el login manualmente
-#                 do_login(request, user)
-#                 # Y le redireccionamos a la portada
-#                 return redirect('/')
-
-#     # Si llegamos al final renderizamos el formulario
-#     return render(request, "users/register.html", {'form': form})
-
-# def login(request):
-#     # Creamos el formulario de autenticación vacío
-#     form = AuthenticationForm()
-#     if request.method == "POST":
-#         # Añadimos los datos recibidos al formulario
-#         form = AuthenticationForm(data=request.POST)
-#         # Si el formulario es válido...
-#         if form.is_valid():
-#             # Recuperamos las credenciales validadas
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-
-#             # Verificamos las credenciales del usuario
-#             user = authenticate(username=username, password=password)
-
-#             # Si existe un usuario con ese nombre y contraseña
-#             if user is not None:
-#                 # Hacemos el login manualmente
-#                 do_login(request, user)
-#                 # Y le redireccionamos a la portada
-#                 return redirect('/')
-
-#     # Si llegamos al final renderizamos el formulario
-#     return render(request, "users/login.html", {'form': form})
+def search(request):
+    shools_list = School.objects.all()
+    shools_filter = SchooFilter(request.GET, queryset=shools_list)
+    return render(request, 'admin/school_list.html', {'filter': shools_filter})

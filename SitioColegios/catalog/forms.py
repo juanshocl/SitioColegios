@@ -58,7 +58,7 @@ class RatingsForm(forms.ModelForm):
             'Schools': 'Colegio',
         }
         widgets = {
-            'User': forms.Select(attrs={'class':'form-control'}),
+            #'User': forms.TextInput(attrs={'class':'form-control'}),
             'Score': forms.Select(attrs={'class':'form-control'}),
             'Schools': forms.Select(attrs={'class':'form-control'}),
         }
@@ -72,7 +72,6 @@ class RegistroForm(UserCreationForm):
             'first_name',
             'last_name',
             'email',
-            #'is_superuser',
             'is_staff',
             'password1',
             'password2',
@@ -81,7 +80,6 @@ class RegistroForm(UserCreationForm):
             'username': 'Nombre Usuario',
             'first_name': 'Nombre',
             'last_name': 'Apellidos',
-            #'is_superuser': 'Usuario Administrador',
             'is_staff': 'Usuario normal',
             'email': 'Email',
             'password1': 'Password',

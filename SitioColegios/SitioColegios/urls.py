@@ -26,6 +26,7 @@ from SitioColegios.views import SchoolList, SchoolCreate, SchoolUpdate, SchoolDe
  #   SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate
 from . import views
 from django.contrib.auth import views as auth_views
+from catalog.filters import SchooFilter
 
 
 
@@ -49,6 +50,5 @@ urlpatterns = [
     path('passreset/password_reset_done', PasswordResetDoneView.as_view(template_name='passreset/password_reset_done.html'), name = 'password_reset_done'),
     re_path(r'^passreset/(?P<uidb64>[0-9A-za-z_\-]+)/(?P<token>.+)/$', PasswordResetConfirmView.as_view(template_name='passreset/password_reset_confirm.html'), name = 'password_reset_confirm'),
     path('passreset/done',PasswordResetCompleteView.as_view(template_name='passreset/password_reset_complete.html') , name = 'password_reset_complete'),
-    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
