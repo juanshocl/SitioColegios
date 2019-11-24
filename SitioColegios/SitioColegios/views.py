@@ -1,5 +1,6 @@
 import json
 from rest_framework.views import APIView
+from rest_framework import viewsets
 from django.http import  HttpResponse, HttpResponseRedirect
 from django.template import Template, Context
 from django.shortcuts import render, redirect
@@ -160,30 +161,36 @@ def search(request):
     return render(request, 'admin/school_list.html', {'filter': shools_filter})
 
 #API
-class SchoolViewSet(APIView):
-#     queryset = User.objects.all().order_by('-date_joined')
-    serializer = SchoolSerializer
-
-    def get(self, request, format=None):
-         listar  = School.objects.all().order_by('Name')
-         response = self.serializer(listar, many=True)
-         return HttpResponse(json.dumps(response.data), content_type='application/json')
+class SchoolViewSet(viewsets.ModelViewSet):
+     queryset = School.objects.all().order_by('Name')
+     serializer_class = SchoolSerializer
 
 
-class UserViewSet(APIView):
-     serializer = UserSerializer
+#     serializer = SchoolSerializer
+#     def get(self, request, format=None):
+#          listar  = School.objects.all().order_by('Name')
+#          response = self.serializer(listar, many=True)
+#          return HttpResponse(json.dumps(response.data), content_type='application/json')
+
+
+class UserViewSet(viewsets.ModelViewSet):
+     queryset = User.objects.all().order_by('-date_joined')
+     serializer_class = UserSerializer
+     # serializer = UserSerializer
      
-     def get(self, request, format=None):
-          queryset = User.objects.all().order_by('-date_joined')
-          response = self.serializer(queryset, many=True, context=self.context).data
-          return HttpResponse(json.dumps(response.data), content_type='application/json')
+     # def get(self, request, format=None):
+     #      queryset = User.objects.all().order_by('-date_joined')
+     #      response = self.serializer(queryset, many=True, context=self.context).data
+     #      return HttpResponse(json.dumps(response.data), content_type='application/json')
     
 
-class ContactViewSet(APIView):
+class ContactViewSet(viewsets.ModelViewSet):
+     queryset = ContactModel.objects.all().order_by('Nombre')
+     serializer_class = ContactSerializer
      
-     serializer = ContactSerializer
+     # serializer = ContactSerializer
 
-     def get(self, request, format=None):
-          queryset = ContactModel.objects.all().order_by('Nombre')
-          response = self.serializer(queryset, many=True)
-          return HttpResponse(json.dumps(response.data), content_type='application/json')
+     # def get(self, request, format=None):
+     #      queryset = ContactModel.objects.all().order_by('Nombre')
+     #      response = self.serializer(queryset, many=True)
+     #      return HttpResponse(json.dumps(response.data), content_type='application/json')

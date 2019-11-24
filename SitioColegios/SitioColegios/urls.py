@@ -30,6 +30,11 @@ from rest_framework import routers
 # router = routers.DefaultRouter()
 # router.register(r'shools', views.ShoolViewSet)
 
+router = routers.DefaultRouter()
+router.register(r'schools', views.SchoolViewSet)
+router.register(r'user', views.UserViewSet)
+router.register(r'contact', views.ContactViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls), #OK
@@ -52,9 +57,8 @@ urlpatterns = [
     re_path(r'^passreset/(?P<uidb64>[0-9A-za-z_\-]+)/(?P<token>.+)/$', PasswordResetConfirmView.as_view(template_name='passreset/password_reset_confirm.html'), name = 'password_reset_confirm'),
     path('passreset/done',PasswordResetCompleteView.as_view(template_name='passreset/password_reset_complete.html') , name = 'password_reset_complete'),
     
-    path('api/Schools/', SchoolViewSet.as_view(), name='api_schools'),
-    path('api/users/', UserViewSet.as_view(), name='api_users'),
-    path('api/contacts/', ContactViewSet.as_view(), name='api_contacts'),
+    path('', include(router.urls)),
+    path('api/', include('rest_framework.urls', namespace='rest_framework'))
 
 
     
