@@ -155,7 +155,7 @@
         {% else %}
         <h1>No hay colegios registrados, favor crear algunos</h1>
         {% endif %}
-        {% if is_paginated %}
+        {% comment %} {% if is_paginated %}
             <div class="pagination ">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
@@ -166,13 +166,8 @@
                     {% endif %}
                 </span>
             </div>
-        {% endif %}
+        {% endif %} {% endcomment %}
     </div>
-{% comment %} {% for colegio in object_list %} 
-    {{colegio.Id}}
-{% endfor %} {% endcomment %}
-
-
 
     {% endblock %}
   </div>  
