@@ -36,10 +36,6 @@ class School(models.Model):
     def __str__(self):
         return str(self.Name)
 
-    def score_avg(self):
-        mensaje = "Hola que hace"
-        # rat = Ratings.objects.filter(Ratings.Schools = self.Id).all()
-        return "HOLAAAA" #Ratings.objects.filter(Ratings = self.Id).count()
 
 class Ratings(models.Model):
     RATING = (

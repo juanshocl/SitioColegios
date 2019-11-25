@@ -59,16 +59,15 @@
     {% block cards %}
  <div class="container">
         <div class="card-deck">
-        {% if  object_list%}
+        {% if  data%}
             <!--{{ colegio.name}}-->
-            {% for colegio in object_list %} 
+            {% for colegio in data %} 
             <div class="col-12 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
                     <img class="card-img-top img-fluid" src="{{ colegio.ImageProfile }}" alt="{{colegio.Name}}">
                     <div class="card-body">
                         <h3 class="card-title">{{colegio.Name}}</h3>
                         <p class="card-subtitle text-muted mb-2">
-                        {% comment %} <h1>{{colegio.Score}}</h1> {% endcomment %}
                             {% for i in view.loop_range%}
                                 {% if i <= colegio.Score %}
                                     <i class="icon-star"></i>
@@ -92,8 +91,8 @@
             <h1>No hay colegios registrados, favor crear algunos</h1>
         {% endif %}    
         </div>
-        {% if  object_list%}
-        {% for colegio in object_list %} 
+        {% if  data%}
+        {% for colegio in data %} 
         <!-- Ventana Emergente {{ colegio.name}}-->
             <div class="modal fade" id="Modal{{colegio.Id}}" tabindex="-1">
                 <div class="modal-dialog modal-lg">
@@ -111,7 +110,7 @@
                                 <h4>Calificación</h4>
                                 <p class="card-subtitle text-muted mb-2">
                                     {% for i in view.loop_range%}
-                                        {% if i <= view.Score %}
+                                        {% if i <= colegio.Score %}
                                             <i class="icon-star"></i>
                                         {% else %}
                                             <i class="icon-star-empty"></i>    
@@ -156,7 +155,8 @@
         {% else %}
         <h1>No hay colegios registrados, favor crear algunos</h1>
         {% endif %}
-                    <div class="pagination ">
+        {% if is_paginated %}
+            <div class="pagination ">
                 <span class="step-links">
                     {% if page_obj.has_previous %}
                         <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-primary ">Anterior</a>
@@ -166,7 +166,12 @@
                     {% endif %}
                 </span>
             </div>
+        {% endif %}
     </div>
+{% comment %} {% for colegio in object_list %} 
+    {{colegio.Id}}
+{% endfor %} {% endcomment %}
+
 
 
     {% endblock %}

@@ -28,23 +28,63 @@ from catalog.forms import SchoolForm, RatingsForm, RegistroForm, FormLogin, Cont
 from catalog.filters import SchooFilter
 
 class IndexList(ListView):
-     loop_range = range (1,6)
-     score = 5
      model = School
-     #school = School.objects.get(id=)
-     queryset = School.objects.all().order_by('Name')
-     reviews = Ratings.objects.filter(Schools = queryset)
+     loop_range = range (1,6)
+     paginate_by = 2
      template_name = 'home/index.html'
-     paginate_by = 4 
+
+     def get_context_data(self, **kwargs):
+          context = super(IndexList,self).get_context_data(**kwargs)
+          escuelas = School.objects.all().order_by('Name')
+          data = []
+          for escuela in escuelas:
+               promedio = Ratings.objects.filter(Schools=escuela.Id).aggregate(Avg('Score'))['Score__avg']
+               dic = {
+               'Id': escuela.Id,
+               'Name' : escuela.Name,
+               'Score': promedio,
+               'ImageMD':escuela.ImageMD, 
+               'ImageProfile':escuela.ImageProfile,
+               'Address':escuela.Address,
+               'State_Province':escuela.State_Province,
+               'Phone':escuela.Phone, 
+               'Type':escuela.Type,
+               'Review':escuela.Review,
+          }
+               data.append(dic)
+
+          context['data'] = data
+          return context
 
 
 class SchoolList(ListView):
      loop_range = range (1,6)
-     score = 5
      model = School
-     queryset = School.objects.all().order_by('Name')
      template_name = 'admin/school_list.html'
      paginate_by = 4
+
+     def get_context_data(self, **kwargs):
+          context = super(SchoolList,self).get_context_data(**kwargs)
+          escuelas = School.objects.all().order_by('Name')
+          data = []
+          for escuela in escuelas:
+               promedio = Ratings.objects.filter(Schools=escuela.Id).aggregate(Avg('Score'))['Score__avg']
+               dic = {
+               'Id': escuela.Id,
+               'Name' : escuela.Name,
+               'Score': promedio,
+               'ImageMD':escuela.ImageMD, 
+               'ImageProfile':escuela.ImageProfile,
+               'Address':escuela.Address,
+               'State_Province':escuela.State_Province,
+               'Phone':escuela.Phone, 
+               'Type':escuela.Type,
+               'Review':escuela.Review,
+          }
+               data.append(dic)
+
+          context['data'] = data
+          return context
 
 
 class SchoolCreate(CreateView):
@@ -81,10 +121,33 @@ class RatingsCreate(CreateView):
 
 class Galeria(ListView):
      loop_range = range (1,6)
-     score = 5
      model = School
      template_name = 'galeria/galeria.html'
      paginate_by = 6
+
+     def get_context_data(self, **kwargs):
+          context = super(Galeria,self).get_context_data(**kwargs)
+          escuelas = School.objects.all().order_by('Name')
+          data = []
+          for escuela in escuelas:
+               promedio = Ratings.objects.filter(Schools=escuela.Id).aggregate(Avg('Score'))['Score__avg']
+               dic = {
+               'Id': escuela.Id,
+               'Name' : escuela.Name,
+               'Score': promedio,
+               'ImageMD':escuela.ImageMD, 
+               'ImageProfile':escuela.ImageProfile,
+               'Address':escuela.Address,
+               'State_Province':escuela.State_Province,
+               'Phone':escuela.Phone, 
+               'Type':escuela.Type,
+               'Review':escuela.Review,
+          }
+               data.append(dic)
+
+          context['data'] = data
+          return context
+
 
 class StateCreate(CreateView):
      model = state_province

@@ -5,8 +5,8 @@
 <div class="row">
 
   <!-- Grid column -->
-  {% if  object_list%}
-  {% for colegio in object_list %} 
+  {% if  data%}
+  {% for colegio in data %} 
     <div class="col-lg-4 col-md-12 mb-4">
 
       <!--Modal: Name-->
@@ -26,7 +26,7 @@
                             <h4>Calificación</h4>
                             <p class="card-subtitle text-muted mb-2">
                                 {% for i in view.loop_range%}
-                                    {% if i <= view.Score %}
+                                    {% if i <= colegio.Score %}
                                         <i class="icon-star"></i>
                                     {% else %}
                                         <i class="icon-star-empty"></i>    

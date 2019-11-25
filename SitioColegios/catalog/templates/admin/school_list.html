@@ -1,7 +1,7 @@
 {% extends "generic.html" %} {% block content %}
 <br>
 <div class="container">
-<div class="float-right">
+<div class="float-right  d-none">
     <form class="form-inline ml-auto">
       <div class="md-form my-0">
         <input class="form-control" type="text" placeholder="Buscar" aria-label="Buscar">
@@ -22,12 +22,12 @@
         </tr>
     </thead>
     <tbody>
-        {% if object_list%} {% for colegio in object_list %}
+        {% if data%} {% for colegio in data %}
         <tr>
             <td>{{ colegio.Name }}</td>
             <td>
                 {% for i in view.loop_range %} 
-                {% if i <= view.Score %} 
+                {% if i <= colegio.Score %} 
                     <i class="icon-star"></i>
                     {% else %}
                         <i class="icon-star-empty"></i> 
