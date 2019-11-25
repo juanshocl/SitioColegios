@@ -17,7 +17,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.generic.edit import FormView
 
 #Importamos los serializers de los modelos.
-from catalog.serializers import SchoolSerializer, UserSerializer, ContactSerializer
+from catalog.serializers import SchoolSerializer, UserSerializer, ContactSerializer, StateSerializer, TypeSchoolsSerializer
 
 
 #Importamos los modelos de la Base de datos.
@@ -28,13 +28,19 @@ from catalog.forms import SchoolForm, RatingsForm, RegistroForm, FormLogin, Cont
 from catalog.filters import SchooFilter
 
 class IndexList(ListView):
+     loop_range = range (1,6)
+     score = 5
      model = School
+     #school = School.objects.get(id=)
      queryset = School.objects.all().order_by('Name')
+     reviews = Ratings.objects.filter(Schools = queryset)
      template_name = 'home/index.html'
-     paginate_by = 4
+     paginate_by = 4 
 
 
 class SchoolList(ListView):
+     loop_range = range (1,6)
+     score = 5
      model = School
      queryset = School.objects.all().order_by('Name')
      template_name = 'admin/school_list.html'
@@ -66,11 +72,16 @@ class RatingsList(ListView):
 
 class RatingsCreate(CreateView):
      model = Ratings
+     #promedio = Ratings.objects.filter(Schools=).aggregate(Avg('Score'))
      template_name = 'evaluar/evaluacion.html'
      form_class = RatingsForm
      success_url = reverse_lazy('index')
 
+
+
 class Galeria(ListView):
+     loop_range = range (1,6)
+     score = 5
      model = School
      template_name = 'galeria/galeria.html'
      paginate_by = 6
@@ -93,36 +104,7 @@ class ContactCreate(CreateView):
      template_name = 'contact/contacto.html'
      success_url  = reverse_lazy('index')
 
-def contact(request):
-         return render(
-     request,
-     'contact/contacto_old.html',
-     context={},
-)
 
-
-     # model = Ratings
-     # model_shool = School
-     # form_class = RatingsForm
-     # # second_form_class = SchoolForm
-     # #dato = form_class.Score
-     # template_name = 'evaluar/evaluacion_list.html'
-     # success_url  = reverse_lazy('index')
-
-     # # def get_context_data(self, **kwargs):
-     # #      context = super(RatingsCreate, self).get_context_data(**kwargs)
-     # #      if 'form' not in context:
-     # #           context['form'] = self.form_class(self.request.GET)
-     # #      if 'form2' not in context:
-     # #           context['form2'] = self.form_class(self.request.GET)
-     # #      return context
-     
-     # # def post(self, request, **args, **kwargs):
-     # #      self.object = self.get_object
-     # #      form = self.form_class(request.POST)
-     # #      form2 = self.second_form_class(request.POST)
-
-# class Contact()
 
 class RegisterUsuario(CreateView):
      model = User
@@ -165,32 +147,19 @@ class SchoolViewSet(viewsets.ModelViewSet):
      queryset = School.objects.all().order_by('Name')
      serializer_class = SchoolSerializer
 
-
-#     serializer = SchoolSerializer
-#     def get(self, request, format=None):
-#          listar  = School.objects.all().order_by('Name')
-#          response = self.serializer(listar, many=True)
-#          return HttpResponse(json.dumps(response.data), content_type='application/json')
-
-
 class UserViewSet(viewsets.ModelViewSet):
      queryset = User.objects.all().order_by('-date_joined')
      serializer_class = UserSerializer
-     # serializer = UserSerializer
-     
-     # def get(self, request, format=None):
-     #      queryset = User.objects.all().order_by('-date_joined')
-     #      response = self.serializer(queryset, many=True, context=self.context).data
-     #      return HttpResponse(json.dumps(response.data), content_type='application/json')
-    
 
 class ContactViewSet(viewsets.ModelViewSet):
      queryset = ContactModel.objects.all().order_by('Nombre')
      serializer_class = ContactSerializer
-     
-     # serializer = ContactSerializer
 
-     # def get(self, request, format=None):
-     #      queryset = ContactModel.objects.all().order_by('Nombre')
-     #      response = self.serializer(queryset, many=True)
-     #      return HttpResponse(json.dumps(response.data), content_type='application/json')
+class StateViewSet(viewsets.ModelViewSet):
+     queryset = state_province.objects.all()
+     serializer_class = StateSerializer
+
+
+class TypeSchoolsViewSet(viewsets.ModelViewSet):
+     queryset = SchoolType.objects.all()
+     serializer_class = TypeSchoolsSerializer

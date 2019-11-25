@@ -7,31 +7,14 @@ from rest_framework.serializers import ModelSerializer
 class StateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = state_province
-        fields= ['Id','NameSP']
+        fields= ['Id','url','NameSP']
 
 
 class SchoolSerializer(serializers.HyperlinkedModelSerializer):
-    # State_Province = serializers.PrimaryKeyRelatedField( read_only=True)
-    # State_Province = StateSerializer(many=True)
-
+    #State_Province = serializers.PrimaryKeyRelatedField(many=True, queryset=state_province.objects.all())
     class Meta:
         model = School
-        fields = ['Id', 'url','Name', 'Score', 'ImageMD', 'ImageProfile', 'Address','State_Province', 'Phone','Review' ]
-
-
-    # def create(self, validated_data):
-
-    #     state = state_province(Id=validated_data.get("Id") )
-    #     state.save()        
-    #     schools = validated_data.get('state_province')
-    #     for forSchool in schools:
-    #       School.objects.create(State_Provinces=state, **forSchool)
-    #     return validated_data
-
-    #  'State_Province'= models.ForeignKey(state_province, on_delete=models.CASCADE) # relacion muchos a uno
-    #  = models.CharField(max_length=12)
-    # 'Type' = models.ForeignKey(SchoolType, on_delete=models.CASCADE)
-    #  = models.TextField(max_length=2000)
+        fields = ['Id','url','Name', 'ImageMD', 'ImageProfile', 'Address','State_Province', 'Phone','Type','Review' ]
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -41,4 +24,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class ContactSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ContactModel
-        fields = ['Nombre','Email','Rut','Region','Comuna','Metodo','Newsletter', 'Msg']
+        fields = ['Nombre','url','Email','Rut','Region','Comuna','Metodo','Newsletter', 'Msg']
+
+
+class TypeSchoolsSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = SchoolType
+        fields=['Id','url','Description']

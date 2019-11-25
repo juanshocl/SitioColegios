@@ -21,7 +21,7 @@ from django.conf.urls import url
 from django.contrib.auth.views import LoginView, logout_then_login, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.contrib.auth.decorators import login_required
 from SitioColegios.views import SchoolList, SchoolCreate, SchoolUpdate, SchoolDelete, RatingsCreate, Galeria, IndexList, RegisterUsuario,\
-    Login, LogoutUser, StateCreate, TypeCreate, ContactCreate, contact, SchoolViewSet, UserViewSet, ContactViewSet
+    Login, LogoutUser, StateCreate, TypeCreate, ContactCreate, SchoolViewSet, UserViewSet, ContactViewSet
 from . import views
 from django.contrib.auth import views as auth_views
 from catalog.filters import SchooFilter
@@ -31,9 +31,11 @@ from rest_framework import routers
 # router.register(r'shools', views.ShoolViewSet)
 
 router = routers.DefaultRouter()
-router.register(r'schools', views.SchoolViewSet)
-router.register(r'user', views.UserViewSet)
-router.register(r'contact', views.ContactViewSet)
+router.register('schools', views.SchoolViewSet)
+router.register('user', views.UserViewSet)
+router.register('contact', views.ContactViewSet)
+router.register('state', views.StateViewSet)
+router.register('type', views.TypeSchoolsViewSet)
 
 
 urlpatterns = [

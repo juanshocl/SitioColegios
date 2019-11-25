@@ -25,8 +25,8 @@
                         <div>
                             <h4>Calificación</h4>
                             <p class="card-subtitle text-muted mb-2">
-                                {% for i in '12345'%}
-                                    {% if i <= colegio.Score %}
+                                {% for i in view.loop_range%}
+                                    {% if i <= view.Score %}
                                         <i class="icon-star"></i>
                                     {% else %}
                                         <i class="icon-star-empty"></i>    

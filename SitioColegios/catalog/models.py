@@ -1,4 +1,5 @@
 import uuid
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Avg
@@ -10,8 +11,8 @@ class SchoolType(models.Model):
     Description = models.CharField(max_length=20)
     
     def __str__(self):
-        return str(self.Description)
-
+        return self.Description
+        
 class state_province(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     NameSP = models.CharField(max_length=25)
@@ -22,7 +23,8 @@ class state_province(models.Model):
 class School(models.Model):
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     Name = models.CharField(max_length=40)
-    Score = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True) #models.FloatField(null=True, blank=True, default=None)
+    #Score = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True) #models.FloatField(null=True, blank=True, default=None) #, validators=[MaxValueValidator(5), MinValueValidator(1)]) #models.FloatField(null=True, blank=True, default=None)
+    #Score = models.IntegerField('Evaluacion de la escuela',null=True,blank=True,validators=[MinValueValidator(1), MaxValueValidator(5)])
     ImageMD = models.ImageField(upload_to='static/img//modal', max_length=100)
     ImageProfile = models.ImageField(upload_to='static/img/profile', max_length=100)
     Address = models.CharField(max_length=60)
@@ -49,8 +51,10 @@ class Ratings(models.Model):
     )
     Id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     User = models.ForeignKey(User, on_delete=models.CASCADE)
-    Score = models.IntegerField(choices=RATING)
+    #Score = models.IntegerField(choices=RATING)
+    Score = models.IntegerField('Evaluacion de la escuela',null=True,blank=True,validators=[MinValueValidator(1), MaxValueValidator(5)])
     Schools = models.ForeignKey(School, on_delete=models.CASCADE, default=None)
+    #comment = models.TextField('Comentario asociado a la escuela',max_length=500,blank=True)
 
     def __str__(self):
          return str(self.User)

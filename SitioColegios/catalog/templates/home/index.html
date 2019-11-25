@@ -68,7 +68,8 @@
                     <div class="card-body">
                         <h3 class="card-title">{{colegio.Name}}</h3>
                         <p class="card-subtitle text-muted mb-2">
-                            {% for i in '12345'%}
+                        {% comment %} <h1>{{colegio.Score}}</h1> {% endcomment %}
+                            {% for i in view.loop_range%}
                                 {% if i <= colegio.Score %}
                                     <i class="icon-star"></i>
                                 {% else %}
@@ -109,8 +110,8 @@
                             <div>
                                 <h4>Calificación</h4>
                                 <p class="card-subtitle text-muted mb-2">
-                                    {% for i in '12345'%}
-                                        {% if i <= colegio.Score %}
+                                    {% for i in view.loop_range%}
+                                        {% if i <= view.Score %}
                                             <i class="icon-star"></i>
                                         {% else %}
                                             <i class="icon-star-empty"></i>    

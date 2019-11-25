@@ -26,8 +26,8 @@
         <tr>
             <td>{{ colegio.Name }}</td>
             <td>
-                {% for i in '12345' %} 
-                {% if i <= colegio.Score %} 
+                {% for i in view.loop_range %} 
+                {% if i <= view.Score %} 
                     <i class="icon-star"></i>
                     {% else %}
                         <i class="icon-star-empty"></i> 

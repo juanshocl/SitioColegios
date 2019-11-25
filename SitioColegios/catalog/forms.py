@@ -11,7 +11,6 @@ class SchoolForm(forms.ModelForm):
 
         fields = [
             'Name',
-            # 'Score',
             'ImageMD',
             'ImageProfile',
             'Address',
@@ -22,7 +21,6 @@ class SchoolForm(forms.ModelForm):
         ]
         labels = {
             'Name': 'Nombre',
-            # 'Score': 'Valoracion',
             'ImageMD': 'Imagen Grande',
             'ImageProfile': 'Imagen Perfil',
             'Address': 'Dirección',
@@ -33,7 +31,6 @@ class SchoolForm(forms.ModelForm):
         }
         widgets = {
             'Name': forms.TextInput(attrs={'class':'form-control'}),
-            # 'Score': forms.TextInput(attrs={'class':'form-control'}),
             'ImageMD': forms.FileInput(attrs={'class':'form-control'}),
             'ImageProfile': forms.FileInput(attrs={'class':'form-control'}),
             'Address': forms.TextInput(attrs={'class':'form-control'}),
@@ -57,9 +54,18 @@ class RatingsForm(forms.ModelForm):
             'Score': 'Evaluacion',
             'Schools': 'Colegio',
         }
+
         widgets = {
             #'User': forms.TextInput(attrs={'class':'form-control'}),
-            'Score': forms.Select(attrs={'class':'form-control'}),
+            #'Score': forms.Select(attrs={'class':'form-control'}),
+            'Score': forms.Select(attrs={'class': 'form-control'}, choices=(
+                (None, 'None'),
+                (1, '★☆☆☆☆'),
+                (2, '★★☆☆☆'),
+                (3, '★★★☆☆'),
+                (4, '★★★★☆'),
+                (5, '★★★★★')
+            )),
             'Schools': forms.Select(attrs={'class':'form-control'}),
         }
 

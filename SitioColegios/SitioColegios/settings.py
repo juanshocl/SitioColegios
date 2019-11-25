@@ -129,8 +129,8 @@ STATICFILES_DIRS = [
     'static'
 ]
 
-LOGIN_REDIRECT_URL = reverse_lazy('/')
-LOGOUT_REDIRECT_URL = reverse_lazy('/')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 
 EMAIL_USE_TLS = True
