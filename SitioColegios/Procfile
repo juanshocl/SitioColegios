@@ -1,1 +1,0 @@
-web: gunicorn SitioColegios.wsgi --log-file -
