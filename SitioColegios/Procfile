@@ -1,1 +1,1 @@
-web: gunicorn SitioColegios.wsgi --log-file
+web: gunicorn SitioColegios.wsgi --log-file=-
