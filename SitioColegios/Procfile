@@ -1,2 +1,4 @@
 // web: gunicorn SitioColegios.wsgi --log-file=-
-web gunicorn bot:SitioColegios
+web: gunicorn SitioColegios.wsgi
+
+// web gunicorn bot:SitioColegios
