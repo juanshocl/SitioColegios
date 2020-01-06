@@ -38,7 +38,7 @@ class IndexList(ListView):
           escuelas = School.objects.all().order_by('Name')
           data = []
           for escuela in escuelas:
-               promedio = Ratings.objects.filter(Schools=escuela.Id).aggregate(Avg('Score'))['Score__avg']
+               promedio = Ratings.objects.filter(School=escuela.Id).aggregate(Avg('Score'))['Score__avg']
                dic = {
                'Id': escuela.Id,
                'Name' : escuela.Name,
@@ -112,7 +112,6 @@ class RatingsList(ListView):
 
 class RatingsCreate(CreateView):
      model = Ratings
-     #promedio = Ratings.objects.filter(Schools=).aggregate(Avg('Score'))
      template_name = 'evaluar/evaluacion.html'
      form_class = RatingsForm
      success_url = reverse_lazy('index')

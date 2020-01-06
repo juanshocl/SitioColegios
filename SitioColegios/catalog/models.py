@@ -25,7 +25,7 @@ class School(models.Model):
     Name = models.CharField(max_length=40)
     #Score = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True) #models.FloatField(null=True, blank=True, default=None) #, validators=[MaxValueValidator(5), MinValueValidator(1)]) #models.FloatField(null=True, blank=True, default=None)
     #Score = models.IntegerField('Evaluacion de la escuela',null=True,blank=True,validators=[MinValueValidator(1), MaxValueValidator(5)])
-    ImageMD = models.ImageField(upload_to='static/img//modal', max_length=100)
+    ImageMD = models.ImageField(upload_to='static/img/modal', max_length=100)
     ImageProfile = models.ImageField(upload_to='static/img/profile', max_length=100)
     Address = models.CharField(max_length=60)
     State_Province = models.ForeignKey(state_province, on_delete=models.CASCADE) # relacion muchos a uno
