@@ -43,11 +43,13 @@ class RatingsForm(forms.ModelForm):
     
     class Meta:
         model = Ratings
+        
 
         fields = [
             'User',
             'Score',
             'Schools',
+
         ]
         labels = {
             'User': 'Usuario',

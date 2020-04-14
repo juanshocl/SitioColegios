@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).ancestor(2)
 SECRET_KEY = '36id#2945&#kbbb!f3s0@dm7ps&jb^uwp+fb3fqqx=_o$8h)xw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.0.13']
 ALLOWED_HOSTS = ['*']
@@ -81,20 +81,20 @@ WSGI_APPLICATION = 'SitioColegios.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME':  BASE_DIR.child('db.sqlite3'),
-#     }
-# }
-import dj_database_url
-from decouple import config
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME':  BASE_DIR.child('db.sqlite3'),
+    }
 }
+# import dj_database_url
+# from decouple import config
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
 
 
 # Password validation
